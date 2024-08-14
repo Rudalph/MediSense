@@ -3,7 +3,7 @@ import { Pill, FileText, Handshake, Goal, BotMessageSquare } from 'lucide-react'
 
 export default function Features() {
   return (
-    <div className="mx-auto px-4 sm:px-6 lg:px-8 mt-20 mb-10">
+    <div className="mx-auto px-4 sm:px-6 lg:px-8 mt-20">
       <div className="mx-auto max-w-xl text-center">
         <div className="mx-auto inline-flex rounded-full bg-gray-100 px-4 py-1.5">
           <p className="text-sm font-bold uppercase tracking-widest text-[#1A2238]">
@@ -63,7 +63,7 @@ export default function Features() {
           <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#D1E9F6]">
             <BotMessageSquare className="h-9 w-9 text-[#1A2238]" />
           </div>
-          <h3 className="mt-8 text-lg font-semibold text-[#D45028]">Goal Tracking</h3>
+          <h3 className="mt-8 text-lg font-semibold text-[#D45028]">Virtual Assistance</h3>
           <p className="mt-4 text-sm text-gray-600">
             A humanized virtual assistance that is capable of answering almost all of your medical queries. We assure 
             that this bot is trained on authentic medical resoures making it safe to use and reliable.
