@@ -28,7 +28,9 @@ const Page = () => {
     formData.append('file', file);
 
     try {
-      const response = await fetch('http://localhost:5004/upload', {
+      // https://medisense-backend.onrender.com
+      // http://localhost:5000/upload
+      const response = await fetch('https://medisense-backend.onrender.com/upload', {
         method: 'POST',
         body: formData,
       });
@@ -78,7 +80,7 @@ const Page = () => {
 
   return (
     <div>
-      <div className='mt-32 flex justify-center gap-10 items-center align-middle'>
+      <div className='mt-24 lg:mt-32 flex justify-center lg:gap-10 items-center align-middle gap-5 mx-1'>
         <Input
           id="picture"
           type="file"
@@ -102,7 +104,7 @@ const Page = () => {
         </Drawer>
       </div>
 
-      <div className='w-full fixed bottom-0 flex justify-center align-middle items-center mb-10'>
+      <div className='w-full fixed bottom-0 flex justify-center align-middle items-center mb-5 lg:mb-10 px-1'>
         <div className="flex w-full max-w-3xl items-center space-x-2 relative">
           <Input
             type="text"
