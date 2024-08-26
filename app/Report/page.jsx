@@ -1,9 +1,9 @@
 "use client"
 import React, { useState } from 'react';
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "../../Components/ui/button";
+import { Input } from "../../Components/ui/input";
 import { RiSendPlaneFill } from "react-icons/ri";
-import { Drawer, DrawerClose, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
+import { Drawer, DrawerClose, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "../../Components/ui/drawer";
 import { RiRobot2Line } from "react-icons/ri";
 import { FaRegUser } from "react-icons/fa";
 
