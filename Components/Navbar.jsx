@@ -10,7 +10,7 @@ const menuItems = [
   },
   {
     name: 'Report',
-    href: '#',
+    href: '/Report',
   },
   {
     name: 'Prescription',
