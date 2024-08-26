@@ -14,7 +14,7 @@ const menuItems = [
   },
   {
     name: 'Prescription',
-    href: '#',
+    href: '/Prescription',
   },
   {
     name: 'Advice',
