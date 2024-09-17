@@ -21,8 +21,8 @@ const menuItems = [
     href: '#',
   },
   {
-    name: 'Goals',
-    href: '#',
+    name: 'Monitor',
+    href: '/Monitor',
   },
 ]
 
