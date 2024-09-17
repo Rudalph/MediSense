@@ -50,19 +50,19 @@ const Page = () => {
 
 
   // Function to generate random SPO2 value between 95 to 100
-  // const randomSPO2Generator = () => {
-  //   return Math.floor(Math.random() * (100 - 95 + 1)) + 95;
-  // };
+  const randomSPO2Generator = () => {
+    return Math.floor(Math.random() * (100 - 95 + 1)) + 95;
+  };
 
   // Function to generate random Pulse Rate value between 60 to 100
-  // const randomPulseRateGenerator = () => {
-  //   return Math.floor(Math.random() * (100 - 60 + 1)) + 60;
-  // };
+  const randomPulseRateGenerator = () => {
+    return Math.floor(Math.random() * (100 - 60 + 1)) + 60;
+  };
 
   // Function to generate random Body Temperature value between 36.1°C to 37.2°C
-  // const randomTemperatureGenerator = () => {
-  //   return (Math.random() * (50 - 30) + 30).toFixed(1); // Generates a number between 30 and 50
-  // };
+  const randomTemperatureGenerator = () => {
+    return (Math.random() * (50 - 30) + 30).toFixed(1); // Generates a number between 30 and 50
+  };
 
 
 
