@@ -1,4 +1,4 @@
-import { Cabin } from "next/font/google";
+import { Cabin, Roboto } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/Components/Navbar";
 
