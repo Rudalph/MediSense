@@ -98,7 +98,7 @@ const Page = () => {
               {summary}
             </div>
             <DrawerClose>
-              <Button variant="outline" className='bg-[#D45028] text-white mb-4'>Close</Button>
+              <Button variant="outline" className='border border-[#D45028] text-[#D45028] bg-transparent hover:bg-[#D45028] hover:text-[white] font-bold mb-4'>Close</Button>
             </DrawerClose>
           </DrawerContent>
         </Drawer>
