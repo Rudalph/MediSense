@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart, Bar, PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 import firestore from '@/Components/firebase'; // Assuming the correct path to firebase.js
 import { collection, addDoc, serverTimestamp, getDocs } from "firebase/firestore";
+import Image from 'next/image';
 
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
@@ -43,6 +44,7 @@ const Page = () => {
   const [pulseRateSum, setPulseRateSum] = useState(0);
   const [temperatureSum, setTemperatureSum] = useState(0);
   const [recommendations, setRecommendations] = useState(null);
+  const [loader, setLoader] = useState(false)
 
 
 
@@ -157,6 +159,7 @@ const Page = () => {
 
   //Function to handle GENAI recommendations
   const handleGetRecommendations = async ({ SPO2, PulseRate, Temperature }) => {
+    setLoader(true)
     console.log(SPO2)
     console.log(PulseRate)
     console.log(Temperature)
@@ -179,6 +182,7 @@ const Page = () => {
 
       if (response.ok) {
         setRecommendations(result.recommendations);
+        setLoader(false)
         console.log(result.recommendations)
       } else {
         console.error('Error:', result.error);
@@ -339,8 +343,8 @@ const Page = () => {
                                 </tbody>
                               </table>
                             </div>
-                            <div className='flex justify-center align-middle items-center m-10 '>
-                              <button className="btn border border-[#1A2238] text-[#1A2238] bg-transparent hover:bg-[#1A2238] hover:text-[white] font-bold" onClick={() => handleGetRecommendations({ SPO2: entry.SPO2, PulseRate: entry.PulseRate, Temperature: entry.Temperature })}>Get AI Recommendations</button>
+                            <div className='flex justify-center align-middle items-center m-8 '>
+                              <button className={`btn border border-[#1A2238] text-[#1A2238] bg-transparent hover:bg-[#1A2238] hover:text-[white] font-bold ${loader ? 'hover:bg-transparent border border-[#1A2238] hover:border hover:border-[#1A2238]' : ''}`} onClick={() => handleGetRecommendations({ SPO2: entry.SPO2, PulseRate: entry.PulseRate, Temperature: entry.Temperature })}>{loader ? <Image src="/loader_blue.gif" alt='' height={30} width={30} className=' font-extrabold text-lg'/> : 'Get AI Recommendations'}</button>
                             </div>
 
                             {recommendations && (
