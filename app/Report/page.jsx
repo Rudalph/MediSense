@@ -6,12 +6,15 @@ import { RiSendPlaneFill } from "react-icons/ri";
 import { Drawer, DrawerClose, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "../../Components/ui/drawer";
 import { RiRobot2Line } from "react-icons/ri";
 import { FaRegUser } from "react-icons/fa";
+import Image from 'next/image';
 
 const Page = () => {
   const [file, setFile] = useState(null);
   const [summary, setSummary] = useState('');
   const [question, setQuestion] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
+  const [showDrawer, setShowDrawer] = useState(false)
+  const [loader, setLoader] = useState(false)
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
@@ -26,7 +29,7 @@ const Page = () => {
 
     const formData = new FormData();
     formData.append('file', file);
-
+    setLoader(true);
     try {
       // https://medisense-backend.onrender.com
       // http://localhost:5000/upload
@@ -37,11 +40,12 @@ const Page = () => {
 
       if (response.ok) {
         const data = await response.json();
-
         console.log(data.summary);
         const cleanedSummary = data.summary.replace(/[*#]/g, '');
         console.log(cleanedSummary);
         setSummary(cleanedSummary);
+        setLoader(false);
+        setShowDrawer(true);
       } else {
         console.error('Error:', response.statusText);
       }
@@ -87,9 +91,9 @@ const Page = () => {
           className="w-full max-w-xs border border-[#182C4E] p-2"
           onChange={handleFileChange}
         />
-        <Button type="submit" className="bg-[#182C4E] text-white" onClick={handleSummarizeClick}>Upload</Button>
-        <Drawer>
-          <DrawerTrigger className='bg-[#182C4E] text-white p-2 border rounded-md'>Summarize</DrawerTrigger>
+        <Button type="submit" className={`border border-[#182C4E] text-[#182C4E] bg-transparent font-bold hover:bg-[#182C4E] hover:text-white ${loader ? 'bg-[#182C4E]' : ''}`} onClick={handleSummarizeClick}>{loader ? <Image src="/loader.gif" alt='' height={30} width={30} className=' font-extrabold text-lg'/> : 'Upload' }</Button>
+        {showDrawer ? <Drawer>
+          <DrawerTrigger className='border border-[#182C4E] bg-transparent font-bold hover:bg-[#182C4E] hover:text-white p-2 rounded-md'>Summarize</DrawerTrigger>
           <DrawerContent className='bg-white'>
             <DrawerHeader>
               <DrawerTitle className='text-[#D45028]'>Summary Of Your Report</DrawerTitle>
@@ -101,7 +105,8 @@ const Page = () => {
               <Button variant="outline" className='border border-[#D45028] text-[#D45028] bg-transparent hover:bg-[#D45028] hover:text-[white] font-bold mb-4'>Close</Button>
             </DrawerClose>
           </DrawerContent>
-        </Drawer>
+        </Drawer> : '' }
+        
       </div>
 
       <div className='w-full fixed bottom-0 flex justify-center align-middle items-center mb-5 lg:mb-10 px-1'>
