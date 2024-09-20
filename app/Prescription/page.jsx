@@ -5,7 +5,7 @@ import { Input } from "../../Components/ui/input";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { BsFillClipboardDataFill } from "react-icons/bs";
 import { LuNewspaper } from "react-icons/lu";
-
+import Image from 'next/image';
 
 
 
@@ -14,12 +14,14 @@ const Page = () => {
     const [answer, setAnswer] = useState("");
     const [chatHistory, setChatHistory] = useState([]);
     const [data, setData] = useState([]);
+    const [loader, setLoader] = useState(false)
 
     const handleQuestionChange = (e) => {
         setQuestion(e.target.value);
     };
 
     const handleSubmit = async () => {
+        setLoader(true)
         console.log(question)
         try {
             //https://medisense-backend.onrender.com
@@ -45,6 +47,7 @@ const Page = () => {
             setAnswer(result.answer); // Adjust this if necessary
             setChatHistory([...chatHistory, { question, answer: result.answer }]);
             setQuestion(""); // Clear input after submission
+            setLoader(false);
         } catch (error) {
             console.error('Error:', error);
         }
@@ -97,7 +100,8 @@ const Page = () => {
                         onClick={handleSubmit}
                         className="absolute right-1 px-2 py-1 bg-transparent hover:bg-transparent text-[#1A2238]"
                     >
-                        <RiSendPlaneFill size={27} />
+                        {loader ? <Image src="/loader_blue.gif" alt='' height={30} width={30} className=' font-extrabold text-lg'/> : <RiSendPlaneFill size={27} /> }
+                        
                     </Button>
                 </div>
             </div>
