@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "../../Components/ui/button";
+import { Input } from "../../Components/ui/input";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { BsFillClipboardDataFill } from "react-icons/bs";
 import { LuNewspaper } from "react-icons/lu";
