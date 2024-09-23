@@ -17,8 +17,8 @@ const menuItems = [
     href: '/Prescription',
   },
   {
-    name: 'Advice',
-    href: '#',
+    name: 'Chat-Bot',
+    href: '/Chat',
   },
   {
     name: 'Monitor',
