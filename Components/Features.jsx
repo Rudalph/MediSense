@@ -1,5 +1,5 @@
 import React from 'react'
-import { Pill, FileText, Handshake, Goal, BotMessageSquare } from 'lucide-react'
+import { Pill, FileText, Activity, Goal, BotMessageSquare } from 'lucide-react'
 
 export default function Features() {
   return (
@@ -39,7 +39,7 @@ export default function Features() {
             language further your can talk to your report for better understanding.
           </p>
         </div>
-        <div>
+        {/* <div>
           <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#D1E9F6]">
             <Handshake className="h-9 w-9 text-[#1A2238]" />
           </div>
@@ -48,15 +48,14 @@ export default function Features() {
             Fill up basic form consisting of information like age, height, weight etc. and set your health Goals
             On submitting you will get recommendations to enhance your health condition. 
           </p>
-        </div>
+        </div> */}
         <div>
           <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#D1E9F6]">
-            <Goal className="h-9 w-9 text-[#1A2238]" />
+            <Activity className="h-9 w-9 text-[#1A2238]" />
           </div>
           <h3 className="mt-8 text-lg font-semibold text-[#D45028]">Goal Tracking</h3>
           <p className="mt-4 text-sm text-gray-600">
-            You can graphically visualize the goals the you have set for yourself and self analyze if you are alinged
-            with your goals or diverted.
+          Visualize live health metrics such as SPO2, body temperature, and pulse rate, along with historical trends. Receive personalized doctor consultation suggestions and AI-driven health recommendations.
           </p>
         </div>
         <div>

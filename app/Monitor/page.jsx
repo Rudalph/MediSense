@@ -4,6 +4,9 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart
 import firestore from '@/Components/firebase'; // Assuming the correct path to firebase.js
 import { collection, addDoc, serverTimestamp, getDocs } from "firebase/firestore";
 import Image from 'next/image';
+import { Bounce, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import '../../app/globals.css'
 
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
@@ -185,9 +188,33 @@ const Page = () => {
         setLoader(false)
         console.log(result.recommendations)
       } else {
+        toast.info('Network issue, Try again', {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+        setLoader(false)
         console.error('Error:', result.error);
       }
     } catch (error) {
+      toast.error('Something went wrong, Try again', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+      setLoader(false)
       console.error('Request failed:', error);
     }
   };
@@ -201,6 +228,7 @@ const Page = () => {
 
   return (
     <div>
+      <ToastContainer/>
       {/* //mt-40 ml-4 md:mt-20 md:ml-20 lg:mt-40 lg:ml-72 */}
       <div className='lg:mt-40 text-center mt-28'>
 
@@ -344,7 +372,7 @@ const Page = () => {
                               </table>
                             </div>
                             <div className='flex justify-center align-middle items-center m-8 '>
-                              <button className={`btn border border-[#1A2238] text-[#1A2238] bg-transparent hover:bg-[#1A2238] hover:text-[white] font-bold ${loader ? 'hover:bg-transparent border border-[#1A2238] hover:border hover:border-[#1A2238]' : ''}`} onClick={() => handleGetRecommendations({ SPO2: entry.SPO2, PulseRate: entry.PulseRate, Temperature: entry.Temperature })}>{loader ? <Image src="/loader_blue.gif" alt='' height={30} width={30} className=' font-extrabold text-lg'/> : 'Get AI Recommendations'}</button>
+                              <button className={`btn border border-[#1A2238] text-[#1A2238] bg-transparent hover:bg-[#1A2238] hover:text-[white] font-bold ${loader ? 'hover:bg-transparent border border-[#1A2238] hover:border hover:border-[#1A2238]' : ''}`} onClick={() => handleGetRecommendations({ SPO2: entry.SPO2, PulseRate: entry.PulseRate, Temperature: entry.Temperature })}>{loader ? <Image src="/loader_blue.gif" alt='' height={30} width={30} className=' font-extrabold text-lg' /> : 'Get AI Recommendations'}</button>
                             </div>
 
                             {recommendations && (

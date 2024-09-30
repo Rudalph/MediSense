@@ -8,6 +8,9 @@ import { LuNewspaper } from "react-icons/lu";
 import { RiRobot2Line } from "react-icons/ri";
 import { FaRegUser } from "react-icons/fa";
 import Image from 'next/image';
+import { Bounce, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import '../../app/globals.css'
 
 const Page = () => {
   const [question, setQuestion] = useState("");
@@ -20,6 +23,19 @@ const Page = () => {
   };
 
   const handleSubmit = async () => {
+    if(question===''){
+      toast.warn('Field cannot be empty', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
+    }else{
     setLoader(true)
     try {
       const response = await fetch('http://127.0.0.1:5003/ask', {
@@ -31,6 +47,17 @@ const Page = () => {
       });
 
       if (!response.ok) {
+        toast.info('Network issue, Try again', {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+          });
         throw new Error('Network response was not ok');
       }
 
@@ -56,9 +83,21 @@ const Page = () => {
     //    // After fetching the answer, generate speech using Eleven Labs API
     //   await generateAndPlaySpeech(newAnswer);
     } catch (error) {
+      toast.error('Something went wrong, Try again', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
       console.error('Error:', error);
     }
-  };
+  }
+};
 
   // Function to call Eleven Labs API and play the audio
 //   const generateAndPlaySpeech = async (text) => {
@@ -129,12 +168,34 @@ const generateSpeech = async (text) => {
       });
 
       if (!response.ok) {
+        toast.info('Failed to fetch audio', {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+          });
         throw new Error('Failed to fetch audio');
       }
 
       // Convert response to blob (return this blob for use later)
       return await response.blob();
     } catch (error) {
+      toast.error('Error generating speech', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
       console.error('Error generating speech:', error);
     }
   };
