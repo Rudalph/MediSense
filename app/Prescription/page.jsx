@@ -6,6 +6,9 @@ import { RiSendPlaneFill } from "react-icons/ri";
 import { BsFillClipboardDataFill } from "react-icons/bs";
 import { LuNewspaper } from "react-icons/lu";
 import Image from 'next/image';
+import { Bounce, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import '../../app/globals.css'
 
 
 
@@ -21,40 +24,83 @@ const Page = () => {
     };
 
     const handleSubmit = async () => {
-        setLoader(true)
-        console.log(question)
-        try {
-            //https://medisense-backend.onrender.com
-            //http://localhost:5001/brand
-            const response = await fetch('https://medisense-backend.onrender.com/brand', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ question }),
-            });
+        if (question === '') {
+            toast.warn('Field cannot be empty', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+                });
+        } else {
+            setLoader(true)
+            console.log(question)
+            try {
+                //https://medisense-backend.onrender.com
+                //http://localhost:5001/brand
+                const response = await fetch('https://medisense-backend.onrender.com/brand', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ question }),
+                });
 
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+                if (!response.ok) {
+                    toast.info('Network issue, Try again', {
+                        position: "bottom-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                    });
+                    setLoader(false)
+                    // throw new Error('Network response was not ok');
+                    return;
+                }
+
+                const result = await response.json();
+                console.log(result);
+
+                // Assuming 'result' is the array you provided in the question
+                setData(result);
+
+                setAnswer(result.answer); // Adjust this if necessary
+                setChatHistory([...chatHistory, { question, answer: result.answer }]);
+                setQuestion(""); // Clear input after submission
+                setLoader(false);
+            } catch (error) {
+                toast.error('Something went wrong, Try again', {
+                    position: "bottom-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                });
+                setLoader(false)
+                console.error('Error:', error);
             }
-
-            const result = await response.json();
-            console.log(result);
-
-            // Assuming 'result' is the array you provided in the question
-            setData(result);
-
-            setAnswer(result.answer); // Adjust this if necessary
-            setChatHistory([...chatHistory, { question, answer: result.answer }]);
-            setQuestion(""); // Clear input after submission
-            setLoader(false);
-        } catch (error) {
-            console.error('Error:', error);
         }
     };
 
     return (
         <div>
+             <ToastContainer
+      progressClassName="toastProgress"
+  bodyClassName="toastBody"
+      />
             <div className='fixed bottom-0 left-0 hidden md:block'>
                 <div className="drawer">
                     <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -100,8 +146,8 @@ const Page = () => {
                         onClick={handleSubmit}
                         className="absolute right-1 px-2 py-1 bg-transparent hover:bg-transparent text-[#1A2238]"
                     >
-                        {loader ? <Image src="/loader_blue.gif" alt='' height={30} width={30} className=' font-extrabold text-lg'/> : <RiSendPlaneFill size={27} /> }
-                        
+                        {loader ? <Image src="/loader_blue.gif" alt='' height={30} width={30} className=' font-extrabold text-lg' /> : <RiSendPlaneFill size={27} />}
+
                     </Button>
                 </div>
             </div>
@@ -224,9 +270,20 @@ const Page = () => {
                                             <input type="number" placeholder="Landmark" className="input input-bordered w-full max-w-xs m-4" />
                                         </div>
                                     </div>
-                                    <div className="modal-action">
+                                    <div className="modal-action flex justify-end align-middle items-center">
+                                    <button className="btn border border-[#D45028] text-[#D45028] bg-transparent hover:bg-[#D45028] hover:text-[white] font-bold" onClick={()=>{toast.info('Feature coming soon', {
+                    position: "bottom-left",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                });}}>Submit</button>
                                         <form method="dialog">
-                                            <button className="rounded-md bg-[#D45028] px-3 py-2 text-sm font-semibold text-white shadow-sm m-1">Submit</button>
+                                            <button className="btn border border-[#D45028] text-[#D45028] bg-transparent hover:bg-[#D45028] hover:text-[white] font-bold">Close</button>
                                         </form>
                                     </div>
                                 </div>

@@ -7,6 +7,9 @@ import { Drawer, DrawerClose, DrawerContent, DrawerHeader, DrawerTitle, DrawerTr
 import { RiRobot2Line } from "react-icons/ri";
 import { FaRegUser } from "react-icons/fa";
 import Image from 'next/image';
+import { Bounce, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import '../../app/globals.css'
 
 const Page = () => {
   const [file, setFile] = useState(null);
@@ -24,6 +27,17 @@ const Page = () => {
   const handleSummarizeClick = async () => {
     if (!file) {
       console.log('No file selected');
+      toast.warn('No file selected', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
       return;
     }
 
@@ -48,8 +62,30 @@ const Page = () => {
         setShowDrawer(true);
       } else {
         console.error('Error:', response.statusText);
+        toast.info('Network issue, Try again', {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+          });
       }
     } catch (error) {
+      toast.error('Something went wrong, Try again', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
       console.error('Error:', error.message);
     }
   };
@@ -59,31 +95,71 @@ const Page = () => {
   };
 
   const handleSubmit = async () => {
-    try {
-      const response = await fetch('http://127.0.0.1:5003/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ question }),
-      });
+    if (question === '') {
+      toast.warn('Field cannot be empty', {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
+    } else {
+      try {
+        const response = await fetch('http://127.0.0.1:5003/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ question }),
+        });
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
+        if (!response.ok) {
+          toast.info('Network issue, Try again', {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+            });
+          throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        const answer = data.recommendations.replace(/[\*>#]/g, '')
+        setChatHistory([...chatHistory, { question, answer }]);
+        console.log(answer);
+        setQuestion("");
+      } catch (error) {
+        console.log('Error:', error);
+        toast.error('Something went wrong, Try again', {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+          });
       }
-
-      const data = await response.json();
-      const answer = data.recommendations.replace(/[\*>#]/g, '')
-      setChatHistory([...chatHistory, { question, answer}]);
-      console.log(answer);
-      setQuestion(""); 
-    } catch (error) {
-      console.error('Error:', error);
     }
   };
 
   return (
     <div>
+      <ToastContainer
+      progressClassName="toastProgress"
+  bodyClassName="toastBody"
+      />
       <div className='mt-24 lg:mt-32 flex justify-center lg:gap-10 items-center align-middle gap-5 mx-1'>
         <Input
           id="picture"
@@ -91,7 +167,7 @@ const Page = () => {
           className="w-full max-w-xs border border-[#182C4E] p-2"
           onChange={handleFileChange}
         />
-        <Button type="submit" className={`border border-[#182C4E] text-[#182C4E] bg-transparent font-bold hover:bg-[#182C4E] hover:text-white ${loader ? 'bg-[#182C4E]' : ''}`} onClick={handleSummarizeClick}>{loader ? <Image src="/loader.gif" alt='' height={30} width={30} className=' font-extrabold text-lg'/> : 'Upload' }</Button>
+        <Button type="submit" className={`border border-[#182C4E] text-[#182C4E] bg-transparent font-bold hover:bg-[#182C4E] hover:text-white ${loader ? 'bg-[#182C4E]' : ''}`} onClick={handleSummarizeClick}>{loader ? <Image src="/loader.gif" alt='' height={30} width={30} className=' font-extrabold text-lg' /> : 'Upload'}</Button>
         {showDrawer ? <Drawer>
           <DrawerTrigger className='border border-[#182C4E] bg-transparent font-bold hover:bg-[#182C4E] hover:text-white p-2 rounded-md'>Summarize</DrawerTrigger>
           <DrawerContent className='bg-white'>
@@ -105,8 +181,8 @@ const Page = () => {
               <Button variant="outline" className='border border-[#D45028] text-[#D45028] bg-transparent hover:bg-[#D45028] hover:text-[white] font-bold mb-4'>Close</Button>
             </DrawerClose>
           </DrawerContent>
-        </Drawer> : '' }
-        
+        </Drawer> : ''}
+
       </div>
 
       <div className='w-full fixed bottom-0 flex justify-center align-middle items-center mb-5 lg:mb-10 px-1'>

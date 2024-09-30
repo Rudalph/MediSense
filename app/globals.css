@@ -37,3 +37,31 @@ body {
       scrollbar-width: none;  /* Firefox */
 }
 }
+
+.Toastify__close-button {
+  color: #ffffff !important; /* Set close button color to white */
+  opacity: 1; /* Ensure the button is fully opaque */
+}
+
+.Toastify__close-button:hover {
+  color: #D45028 !important; /* Change color on hover, if desired */
+}
+
+.Toastify__toast--warning {
+  background: #1A2238 !important;
+}
+.Toastify__toast--error {
+  background: #1A2238 !important;
+}
+.Toastify__toast--info {
+  background: #1A2238 !important;
+}
+.toastBody {
+  font-family: 'Cabin';
+  color: #ffffff; /* #10171D */
+  font-size: 0.9rem !important;
+  font-weight: bold;
+}
+.toastProgress {
+  background: #D45028 !important;
+}

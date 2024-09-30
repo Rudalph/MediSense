@@ -2,7 +2,8 @@ import { Cabin, Roboto } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/Components/Navbar";
 
-const inter = Cabin({ subsets: ["latin"], weight:['400','500','600','700']});
+
+const inter = Cabin({ subsets: ["latin"], weight: ['400', '500', '600', '700'] });
 
 export const metadata = {
   title: "MediSense",
