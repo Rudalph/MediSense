@@ -53,7 +53,7 @@ export default function Features() {
           <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#D1E9F6]">
             <Activity className="h-9 w-9 text-[#1A2238]" />
           </div>
-          <h3 className="mt-8 text-lg font-semibold text-[#D45028]">Goal Tracking</h3>
+          <h3 className="mt-8 text-lg font-semibold text-[#D45028]">Live Monitoring</h3>
           <p className="mt-4 text-sm text-gray-600">
           Visualize live health metrics such as SPO2, body temperature, and pulse rate, along with historical trends. Receive personalized doctor consultation suggestions and AI-driven health recommendations.
           </p>
