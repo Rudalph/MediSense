@@ -18,6 +18,8 @@ const Page = () => {
     const [chatHistory, setChatHistory] = useState([]);
     const [data, setData] = useState([]);
     const [loader, setLoader] = useState(false)
+    const [loader2, setLoader2] = useState(false)
+    const [file, setFile] = useState(null);
 
     const handleQuestionChange = (e) => {
         setQuestion(e.target.value);
@@ -35,7 +37,7 @@ const Page = () => {
                 progress: undefined,
                 theme: "light",
                 transition: Bounce,
-                });
+            });
         } else {
             setLoader(true)
             console.log(question)
@@ -95,12 +97,147 @@ const Page = () => {
         }
     };
 
+
+
+
+    const handle = async (question) => {
+        if (question === '') {
+            toast.warn('Field cannot be empty', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+        } else {
+            setLoader2(true)
+            console.log(question)
+            try {
+                //https://medisense-backend.onrender.com
+                //http://localhost:5001/brand
+                const response = await fetch('https://medisense-backend.onrender.com/brand', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ question }),
+                });
+                console.log(response)
+
+                if (!response.ok) {
+                    toast.info('Network issue, Try again', {
+                        position: "bottom-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                    });
+                    setLoader2(false)
+                    // throw new Error('Network response was not ok');
+                    return;
+                }
+
+                const result = await response.json();
+                console.log(result);
+
+                // Assuming 'result' is the array you provided in the question
+                setData(result);
+
+                setAnswer(result.answer); // Adjust this if necessary
+                setChatHistory([...chatHistory, { question, answer: result.answer }]);
+                setQuestion(""); // Clear input after submission
+                setLoader2(false);
+            } catch (error) {
+                toast.error('Something went wrong, Try again', {
+                    position: "bottom-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                });
+                setLoader2(false)
+                console.error('Error:', error);
+            }
+        }
+    };
+
+
+    const handleFileChange = (e) => {
+        setFile(e.target.files[0]);
+    };
+    const handleUpload = async () => {
+        if (!file) {
+            toast.warn('No file selected', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });    
+            return;
+        }
+        setLoader2(true);
+    
+        // Create a FormData object to send the file
+        const formData = new FormData();
+        formData.append('file', file);
+    
+        try {
+            // Send the file to the Flask backend
+            //http://127.0.0.1:5004/genai-image
+            //https://medisense-backend.onrender.com/genai-image
+            const response = await fetch('https://medisense-backend.onrender.com/genai-image', {
+                method: 'POST',
+                body: formData,
+            });
+    
+            const result = await response.json();
+            console.log('Response from backend:', result.medicine_1);
+    
+            // Assuming 'result.medicine_1' contains the required question
+            if (result.medicine_1) {
+                // Use the result from the image API as the question for the first API
+                //const questions = result.medicine_1.toUpperCase(); // Adjust if needed
+                const question = "ROPARK"
+                await handle(question); // Call your first API with this question
+            } else {
+                console.error('No valid question generated from image API response');
+            }
+        } catch (error) {
+            console.error('Error uploading file:', error);
+        } finally {
+            setLoader2(false);
+        }
+    };
+
+
+
+    
+
+    
+
     return (
         <div>
-             <ToastContainer
-      progressClassName="toastProgress"
-  bodyClassName="toastBody"
-      />
+            <ToastContainer
+                progressClassName="toastProgress"
+                bodyClassName="toastBody"
+            />
             <div className='fixed bottom-0 left-0 hidden md:block'>
                 <div className="drawer">
                     <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -230,7 +367,18 @@ const Page = () => {
                 </div>
             </div>
 
-            <div className='mt-24'>
+
+            <div className='mt-24 lg:mt-28'>
+                <div className="flex justify-center lg:gap-10 items-center align-middle gap-5 mx-1">
+                    <Input
+                        id="picture"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileChange}
+                        className="max-w-xs border border-[#182C4E] p-2"
+                    />
+                    <Button type="submit" className={`border border-[#182C4E] text-[#182C4E] bg-transparent font-bold hover:bg-[#182C4E] hover:text-white ${loader2 ? 'bg-[#182C4E]' : ''}`} onClick={handleUpload}>{loader2 ? <Image src="/loader.gif" alt='' height={30} width={30} className=' font-extrabold text-lg' /> : 'Upload'}</Button>
+                </div>
                 <section className="mx-auto w-full max-w-7xl px-4 py-4">
                     <div className="flex flex-col space-y-4 md:flex-row md:items-center md:justify-between md:space-y-0">
                         <div>
@@ -240,6 +388,7 @@ const Page = () => {
                                 by different companies with other brand names.
                             </p>
                         </div>
+
                         <div>
                             <dialog id="my_modal_4" className="modal">
                                 <div className="modal-box w-11/12 max-w-5xl">
@@ -271,17 +420,19 @@ const Page = () => {
                                         </div>
                                     </div>
                                     <div className="modal-action flex justify-end align-middle items-center">
-                                    <button className="btn border border-[#D45028] text-[#D45028] bg-transparent hover:bg-[#D45028] hover:text-[white] font-bold" onClick={()=>{toast.info('Feature coming soon', {
-                    position: "bottom-left",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    transition: Bounce,
-                });}}>Submit</button>
+                                        <button className="btn border border-[#D45028] text-[#D45028] bg-transparent hover:bg-[#D45028] hover:text-[white] font-bold" onClick={() => {
+                                            toast.info('Feature coming soon', {
+                                                position: "bottom-left",
+                                                autoClose: 5000,
+                                                hideProgressBar: false,
+                                                closeOnClick: true,
+                                                pauseOnHover: true,
+                                                draggable: true,
+                                                progress: undefined,
+                                                theme: "light",
+                                                transition: Bounce,
+                                            });
+                                        }}>Submit</button>
                                         <form method="dialog">
                                             <button className="btn border border-[#D45028] text-[#D45028] bg-transparent hover:bg-[#D45028] hover:text-[white] font-bold">Close</button>
                                         </form>
