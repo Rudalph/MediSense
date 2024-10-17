@@ -38,7 +38,9 @@ const Page = () => {
     }else{
     setLoader(true)
     try {
-      const response = await fetch('http://127.0.0.1:5003/bot', {
+      //http://127.0.0.1:5003/bot
+      //https://medisense-backend.onrender.com
+      const response = await fetch('https://medisense-backend.onrender.com/bot', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
