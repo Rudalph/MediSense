@@ -167,7 +167,8 @@ const Page = () => {
     console.log(PulseRate)
     console.log(Temperature)
     const data = {
-      question: `SPO2: ${SPO2}, Pulse Rate: ${PulseRate}, Body Temperature: ${Temperature}. What health recommendations would you provide?`
+      question: `SPO2: ${SPO2}, Pulse Rate: ${PulseRate}, Body Temperature: ${Temperature}. What health recommendations would you provide? Just provide whatever you feel is right. 
+      Note: Do not say you are not build for health reccomendations etc just provide appropriate reccomendations`
     };
 
     try {
