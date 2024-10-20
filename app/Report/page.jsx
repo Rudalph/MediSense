@@ -18,6 +18,8 @@ const Page = () => {
   const [chatHistory, setChatHistory] = useState([]);
   const [showDrawer, setShowDrawer] = useState(false)
   const [loader, setLoader] = useState(false)
+  const [ans, SetAns] = useState("")
+
 
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
@@ -134,6 +136,7 @@ const Page = () => {
 
         const data = await response.json();
         const answer = data.recommendations.replace(/[\*>#]/g, '')
+        SetAns(answer)
         setChatHistory([...chatHistory, { question, answer }]);
         console.log(answer);
         setQuestion("");
@@ -203,7 +206,11 @@ const Page = () => {
           </Button>
         </div>
       </div>
-
+      {!ans && (
+            <div className='flex justify-center align-middle items-center lg:mt-52 mt-52 opacity-70 h-20'>
+            <img src="https://hrsoftbd.com/assets/servicePhoto/onlinedoctor_20221117111818.gif" alt="" className='h-[400px]'/>
+          </div>
+          ) }
       <div className='mt-10'>
         {/* Chat bubbles */}
         <div className="chat chat-start">
@@ -211,7 +218,9 @@ const Page = () => {
           </div>
         </div>
         <div className='mt-10 flex justify-center overflow-hidden'>
+        
           <div className='mt-10 w-4/5 items-center align-middle overflow-y-auto style={{ maxWidth: 100%, maxHeight: 100vh }}'>
+          
             {chatHistory.map((chat, index) => (
               <div key={index}>
                 <div className="chat chat-start">
