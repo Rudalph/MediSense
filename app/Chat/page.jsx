@@ -302,8 +302,8 @@ const generateSpeech = async (text) => {
           
           <div className='mt-10 lg:w-4/5 items-center align-middle h-[500px] overflow-y-scroll no-scrollbar mb-20'>
           {!answer && (
-            <div className='flex justify-center align-middle items-center lg:mt-0 mt-28 opacity-70'>
-            <img src="https://hrsoftbd.com/assets/servicePhoto/onlinedoctor_20221117111818.gif" alt="" />
+            <div className='flex justify-center align-middle items-center lg:mt-20 mt-28 opacity-70'>
+            <img src="https://hrsoftbd.com/assets/servicePhoto/onlinedoctor_20221117111818.gif" alt="" className='h-[400px]'/>
           </div>
           ) }
           
