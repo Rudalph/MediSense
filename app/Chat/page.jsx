@@ -143,8 +143,9 @@ const Page = () => {
 //   };
 
 // Function to call Eleven Labs API and return the audio blob
+////Elevenlabs API KEY - medi-sense-1 - crce.9567: sk_782c8137e7a98a20c6b35fbd2020034ae535f388f26866e3
 const generateSpeech = async (text) => {
-    const apiKey = 'sk_b997b029fd7e97a483b054b9fff5808de21ec6664eb3932e';
+    const apiKey = 'sk_782c8137e7a98a20c6b35fbd2020034ae535f388f26866e3';
     const url = 'https://api.elevenlabs.io/v1/text-to-speech/pMsXgVXv3BLzUgSXRplE';
 
     const headers = {
