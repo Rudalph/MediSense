@@ -17,7 +17,7 @@ CORS(app)
 
 model = genai.GenerativeModel('gemini-1.5-pro-latest')
 
-os.environ["GOOGLE_API_KEY"] = "AIzaSyAThmkRyMBm177cgKljHkVrAd3BLPpL2nk"
+os.environ["GOOGLE_API_KEY"] = "AIzaSyDNr-WITS3OgCnROMjVQk0jUblTPsCxVXs"
 
 llm = ChatGoogleGenerativeAI(model="models/gemini-1.5-pro-latest", temperature=0.5)
 embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
