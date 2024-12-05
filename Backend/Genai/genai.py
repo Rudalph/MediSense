@@ -7,7 +7,7 @@ import re
 app = Flask(__name__)
 CORS(app)
 
-GOOGLE_API_KEY = "AIzaSyC5agUKvQR7gBuutdV0FSo0tpz2MRn8uL4"  # Replace with your Google API key
+GOOGLE_API_KEY = "AIzaSyDNr-WITS3OgCnROMjVQk0jUblTPsCxVXs"  # Replace with your Google API key
 genai.configure(api_key=GOOGLE_API_KEY)
 model = genai.GenerativeModel('gemini-pro')
 
