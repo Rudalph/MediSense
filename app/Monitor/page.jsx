@@ -174,7 +174,7 @@ const Page = () => {
     try {
       //https://medisense-backend.onrender.com/genai
       //http://localhost:5002/
-      const response = await fetch('https://medisense-backend.onrender.com/genai', {
+      const response = await fetch('http://localhost:5000/genai', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
