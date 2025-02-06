@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_25b5a54ed8decb73b13c2a18dede0d75 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_25b5a54ed8decb73b13c2a18dede0d75" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_25b5a54ed8decb73b13c2a18dede0d75 = L.map(
+                "map_25b5a54ed8decb73b13c2a18dede0d75",
+                {
+                    center: [19.4104, 72.8012],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 14,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_52f39efde27e5ab99260f02a9ef34db2 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_52f39efde27e5ab99260f02a9ef34db2.addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var marker_4fba127c4759c1d10374328244593510 = L.marker(
+                [19.4104, 72.8012],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_fcad66f87ba706ae1ff9d2b3fdf899d0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_4fba127c4759c1d10374328244593510.setIcon(icon_fcad66f87ba706ae1ff9d2b3fdf899d0);
+        
+    
+        var popup_4439de4071784fe6cba33291c1ac3156 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1fc152fa3f3783dac38d2f7feb4ef2ca = $(`<div id="html_1fc152fa3f3783dac38d2f7feb4ef2ca" style="width: 100.0%; height: 100.0%;">Your Location</div>`)[0];
+                popup_4439de4071784fe6cba33291c1ac3156.setContent(html_1fc152fa3f3783dac38d2f7feb4ef2ca);
+            
+        
+
+        marker_4fba127c4759c1d10374328244593510.bindPopup(popup_4439de4071784fe6cba33291c1ac3156)
+        ;
+
+        
+    
+    
+            var marker_12a999470c7bee62b1265cb9b3ea929b = L.marker(
+                [19.40962, 72.80084],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_6cb2134ce7d286d159e87dfedeb5e4e5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_12a999470c7bee62b1265cb9b3ea929b.setIcon(icon_6cb2134ce7d286d159e87dfedeb5e4e5);
+        
+    
+        var popup_ee52bc42938005c989f4352a83f1f026 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9adf8ce63542706a603042877a6fb4c7 = $(`<div id="html_9adf8ce63542706a603042877a6fb4c7" style="width: 100.0%; height: 100.0%;">                 <b>Apna Medical</b><br>                 Type: Pharmacy<br>                 Distance: 0.09 km<br>                 Address: Apna Medical, Gass Road, Gass-Taki Pada, Nalasopara West, Nalasopara 401304, India<br>             </div>`)[0];
+                popup_ee52bc42938005c989f4352a83f1f026.setContent(html_9adf8ce63542706a603042877a6fb4c7);
+            
+        
+
+        marker_12a999470c7bee62b1265cb9b3ea929b.bindPopup(popup_ee52bc42938005c989f4352a83f1f026)
+        ;
+
+        
+    
+    
+            var marker_2fc0ae9b8b71fa3877727d4c386242f7 = L.marker(
+                [19.40971, 72.80038],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_c0fdd567a33302c5da59f2321817af3c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_2fc0ae9b8b71fa3877727d4c386242f7.setIcon(icon_c0fdd567a33302c5da59f2321817af3c);
+        
+    
+        var popup_b090d2dbf67531452aaeecab3177b406 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_555043182ece503664c070aaf6e9612a = $(`<div id="html_555043182ece503664c070aaf6e9612a" style="width: 100.0%; height: 100.0%;">                 <b>Janta Medical</b><br>                 Type: Pharmacy<br>                 Distance: 0.12 km<br>                 Address: Janta Medical, Gass Road, Gass-Taki Pada, Nalasopara West, Nalasopara 401304, India<br>             </div>`)[0];
+                popup_b090d2dbf67531452aaeecab3177b406.setContent(html_555043182ece503664c070aaf6e9612a);
+            
+        
+
+        marker_2fc0ae9b8b71fa3877727d4c386242f7.bindPopup(popup_b090d2dbf67531452aaeecab3177b406)
+        ;
+
+        
+    
+    
+            var marker_3a6c4d6350449fe451014b9fe1b25a0e = L.marker(
+                [19.41107, 72.80008],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_259e751d058cbec78948f3e804ad5174 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_3a6c4d6350449fe451014b9fe1b25a0e.setIcon(icon_259e751d058cbec78948f3e804ad5174);
+        
+    
+        var popup_bef76de40d334c9ad2a9dda2cdfdc1e4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c001e6677286247c4718fb10cc0db1d4 = $(`<div id="html_c001e6677286247c4718fb10cc0db1d4" style="width: 100.0%; height: 100.0%;">                 <b>Tanzeela Medical</b><br>                 Type: Pharmacy<br>                 Distance: 0.14 km<br>                 Address: Tanzeela Medical, Gass Road, Gass-Taki Pada, Nalasopara West, Nalasopara 401304, India<br>             </div>`)[0];
+                popup_bef76de40d334c9ad2a9dda2cdfdc1e4.setContent(html_c001e6677286247c4718fb10cc0db1d4);
+            
+        
+
+        marker_3a6c4d6350449fe451014b9fe1b25a0e.bindPopup(popup_bef76de40d334c9ad2a9dda2cdfdc1e4)
+        ;
+
+        
+    
+    
+            var marker_62e56c54ffdfcd3c7897f9cfd885461e = L.marker(
+                [19.41125, 72.79982],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_c1fe8ae92c93be60757bdb3218f095d4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_62e56c54ffdfcd3c7897f9cfd885461e.setIcon(icon_c1fe8ae92c93be60757bdb3218f095d4);
+        
+    
+        var popup_93e4b12f047115f24b470e4280eee018 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_cb31e57715d1bbf09a45791c037e66df = $(`<div id="html_cb31e57715d1bbf09a45791c037e66df" style="width: 100.0%; height: 100.0%;">                 <b>LOTUS Chemist & General Stores</b><br>                 Type: Pharmacy<br>                 Distance: 0.17 km<br>                 Address: LOTUS Chemist & General Stores, Gass Road, Gass-Nawayat Mohalla, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_93e4b12f047115f24b470e4280eee018.setContent(html_cb31e57715d1bbf09a45791c037e66df);
+            
+        
+
+        marker_62e56c54ffdfcd3c7897f9cfd885461e.bindPopup(popup_93e4b12f047115f24b470e4280eee018)
+        ;
+
+        
+    
+    
+            var marker_25da430c1cf1dedf1bf852c4035d01f4 = L.marker(
+                [19.41238, 72.80182],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_34ab37994b52ad5805981d45f48ac9f6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_25da430c1cf1dedf1bf852c4035d01f4.setIcon(icon_34ab37994b52ad5805981d45f48ac9f6);
+        
+    
+        var popup_e31eb8fbe92557988f710f70175caed0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_60a8dc172921f354a97a1eda9f275353 = $(`<div id="html_60a8dc172921f354a97a1eda9f275353" style="width: 100.0%; height: 100.0%;">                 <b>Indus Viva Health Care</b><br>                 Type: Pharmacy<br>                 Distance: 0.23 km<br>                 Address: Indus Viva Health Care, Mushtak Ahmed Jakariya Marg, Gass-Nawayat Mohalla, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_e31eb8fbe92557988f710f70175caed0.setContent(html_60a8dc172921f354a97a1eda9f275353);
+            
+        
+
+        marker_25da430c1cf1dedf1bf852c4035d01f4.bindPopup(popup_e31eb8fbe92557988f710f70175caed0)
+        ;
+
+        
+    
+    
+            var marker_d5277a8bb5febb6f6fc270be93d36723 = L.marker(
+                [19.41336, 72.80088],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_f201a6e05ab1566bc0ef65297c6c3919 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_d5277a8bb5febb6f6fc270be93d36723.setIcon(icon_f201a6e05ab1566bc0ef65297c6c3919);
+        
+    
+        var popup_21d99980048ee2c84e1a4b41fe67f6d7 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4378e90a4a2810bd668363e7aa602677 = $(`<div id="html_4378e90a4a2810bd668363e7aa602677" style="width: 100.0%; height: 100.0%;">                 <b>Yunani Dhawakana</b><br>                 Type: Pharmacy<br>                 Distance: 0.33 km<br>                 Address: Yunani Dhawakana, Gass-Nawayat Mohalla, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_21d99980048ee2c84e1a4b41fe67f6d7.setContent(html_4378e90a4a2810bd668363e7aa602677);
+            
+        
+
+        marker_d5277a8bb5febb6f6fc270be93d36723.bindPopup(popup_21d99980048ee2c84e1a4b41fe67f6d7)
+        ;
+
+        
+    
+    
+            var marker_8f8bcaacb8ecd586d533014e2aab6d48 = L.marker(
+                [19.41295, 72.79955],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_5ffded4745008cf6132f3a48d2c285c4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_8f8bcaacb8ecd586d533014e2aab6d48.setIcon(icon_5ffded4745008cf6132f3a48d2c285c4);
+        
+    
+        var popup_b4ce67d8f1df2a83f4ea7d3c3adeb43a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_fffe6bcbbbfc980755b2e31861f58266 = $(`<div id="html_fffe6bcbbbfc980755b2e31861f58266" style="width: 100.0%; height: 100.0%;">                 <b>Jahad Medico</b><br>                 Type: Pharmacy<br>                 Distance: 0.33 km<br>                 Address: Jahad Medico, Gass Road, Gass-Nawayat Mohalla, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_b4ce67d8f1df2a83f4ea7d3c3adeb43a.setContent(html_fffe6bcbbbfc980755b2e31861f58266);
+            
+        
+
+        marker_8f8bcaacb8ecd586d533014e2aab6d48.bindPopup(popup_b4ce67d8f1df2a83f4ea7d3c3adeb43a)
+        ;
+
+        
+    
+    
+            var marker_856f880d0889ca139ec619fc52239fd4 = L.marker(
+                [19.41365, 72.79944],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_5492571ea08b1103760d867d1b5b6650 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_856f880d0889ca139ec619fc52239fd4.setIcon(icon_5492571ea08b1103760d867d1b5b6650);
+        
+    
+        var popup_55bd42138674d1707176a199407e6664 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_dfc64bbc220d8a18e1ee79f2d1583c1d = $(`<div id="html_dfc64bbc220d8a18e1ee79f2d1583c1d" style="width: 100.0%; height: 100.0%;">                 <b>Samarthkrupa Dhawakana</b><br>                 Type: Pharmacy<br>                 Distance: 0.4 km<br>                 Address: Samarthkrupa Dhawakana, Gass Road, Gass-Nawayat Mohalla, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_55bd42138674d1707176a199407e6664.setContent(html_dfc64bbc220d8a18e1ee79f2d1583c1d);
+            
+        
+
+        marker_856f880d0889ca139ec619fc52239fd4.bindPopup(popup_55bd42138674d1707176a199407e6664)
+        ;
+
+        
+    
+    
+            var marker_d3fd39841b78964eeb84dd277aefaa18 = L.marker(
+                [19.41454, 72.80078],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_a13438f24ed4e5ba5894d3646950768a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_d3fd39841b78964eeb84dd277aefaa18.setIcon(icon_a13438f24ed4e5ba5894d3646950768a);
+        
+    
+        var popup_2ea2f3b165d0fcf9b9aa5bcbb9ec036a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ac2a706d5bfb8df49a50112138ad7997 = $(`<div id="html_ac2a706d5bfb8df49a50112138ad7997" style="width: 100.0%; height: 100.0%;">                 <b>Nagrik Medical & General Stores</b><br>                 Type: Pharmacy<br>                 Distance: 0.46 km<br>                 Address: Nagrik Medical & General Stores, Brahan Chowk, Samel Pada, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_2ea2f3b165d0fcf9b9aa5bcbb9ec036a.setContent(html_ac2a706d5bfb8df49a50112138ad7997);
+            
+        
+
+        marker_d3fd39841b78964eeb84dd277aefaa18.bindPopup(popup_2ea2f3b165d0fcf9b9aa5bcbb9ec036a)
+        ;
+
+        
+    
+    
+            var marker_d797f0fdb997920704e5e678b649552d = L.marker(
+                [19.41417, 72.79914],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_b903db09465c57ea618cdb9ed462fc3d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_d797f0fdb997920704e5e678b649552d.setIcon(icon_b903db09465c57ea618cdb9ed462fc3d);
+        
+    
+        var popup_ce325172ee13b5b0d7251adfa5e21f58 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e9d3f5e2eebcb3988b8a49e926628de4 = $(`<div id="html_e9d3f5e2eebcb3988b8a49e926628de4" style="width: 100.0%; height: 100.0%;">                 <b>Care First</b><br>                 Type: Pharmacy<br>                 Distance: 0.47 km<br>                 Address: Care First, Gass Road, Gass-Nawayat Mohalla, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_ce325172ee13b5b0d7251adfa5e21f58.setContent(html_e9d3f5e2eebcb3988b8a49e926628de4);
+            
+        
+
+        marker_d797f0fdb997920704e5e678b649552d.bindPopup(popup_ce325172ee13b5b0d7251adfa5e21f58)
+        ;
+
+        
+    
+    
+            var marker_20ffd330accde6929bdd1629f497512b = L.marker(
+                [19.41503, 72.80102],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_dcec625a5c07cf3ea4cd7d18ae412f2f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_20ffd330accde6929bdd1629f497512b.setIcon(icon_dcec625a5c07cf3ea4cd7d18ae412f2f);
+        
+    
+        var popup_e4306c54a4220474d4295f9d340df743 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_bd33296e3338677ae6f013c3cd5ca39d = $(`<div id="html_bd33296e3338677ae6f013c3cd5ca39d" style="width: 100.0%; height: 100.0%;">                 <b>Dhanlaxmi Medical</b><br>                 Type: Pharmacy<br>                 Distance: 0.51 km<br>                 Address: Dhanlaxmi Medical, DR Samel Marg, Samel Pada, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_e4306c54a4220474d4295f9d340df743.setContent(html_bd33296e3338677ae6f013c3cd5ca39d);
+            
+        
+
+        marker_20ffd330accde6929bdd1629f497512b.bindPopup(popup_e4306c54a4220474d4295f9d340df743)
+        ;
+
+        
+    
+    
+            var marker_52b4bef82baedcf6c30b6f7624832afb = L.marker(
+                [19.41413, 72.79811],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_a391bf16f582aab5896987f3f718bdce = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_52b4bef82baedcf6c30b6f7624832afb.setIcon(icon_a391bf16f582aab5896987f3f718bdce);
+        
+    
+        var popup_bd21a74d8cec1ce5608153743226fa47 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_eb3d44a478ad52b7f73af44b2754c9c6 = $(`<div id="html_eb3d44a478ad52b7f73af44b2754c9c6" style="width: 100.0%; height: 100.0%;">                 <b>Mahalaxmi Medical</b><br>                 Type: Pharmacy<br>                 Distance: 0.53 km<br>                 Address: Mahalaxmi Medical, Station Road, Wanda, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_bd21a74d8cec1ce5608153743226fa47.setContent(html_eb3d44a478ad52b7f73af44b2754c9c6);
+            
+        
+
+        marker_52b4bef82baedcf6c30b6f7624832afb.bindPopup(popup_bd21a74d8cec1ce5608153743226fa47)
+        ;
+
+        
+    
+    
+            var marker_d727797f80aaea5aba326f7fdcf90a63 = L.marker(
+                [19.41454, 72.80379],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_618383d1caf362e24d4042606fee275b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_d727797f80aaea5aba326f7fdcf90a63.setIcon(icon_618383d1caf362e24d4042606fee275b);
+        
+    
+        var popup_61fe5d89582311cd1ef050485864014c = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4e7baa1bea6d115f5771e77c16d325f5 = $(`<div id="html_4e7baa1bea6d115f5771e77c16d325f5" style="width: 100.0%; height: 100.0%;">                 <b>Jahad Chemist</b><br>                 Type: Pharmacy<br>                 Distance: 0.53 km<br>                 Address: Jahad Chemist, Samel Pada, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_61fe5d89582311cd1ef050485864014c.setContent(html_4e7baa1bea6d115f5771e77c16d325f5);
+            
+        
+
+        marker_d727797f80aaea5aba326f7fdcf90a63.bindPopup(popup_61fe5d89582311cd1ef050485864014c)
+        ;
+
+        
+    
+    
+            var marker_ebc8c5c4d80062e1a5ee1b405c71a035 = L.marker(
+                [19.41537, 72.79984],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_5d15c436354796db6eb140d1bee8d2cc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_ebc8c5c4d80062e1a5ee1b405c71a035.setIcon(icon_5d15c436354796db6eb140d1bee8d2cc);
+        
+    
+        var popup_469d86064d6b634c967e69162f2514ee = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_4b513c9cb67d37d71d7c24b1df84805b = $(`<div id="html_4b513c9cb67d37d71d7c24b1df84805b" style="width: 100.0%; height: 100.0%;">                 <b>Radhika General Store</b><br>                 Type: Pharmacy<br>                 Distance: 0.57 km<br>                 Address: Radhika General Store, Bolinj Sopara Road, Samel Pada, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_469d86064d6b634c967e69162f2514ee.setContent(html_4b513c9cb67d37d71d7c24b1df84805b);
+            
+        
+
+        marker_ebc8c5c4d80062e1a5ee1b405c71a035.bindPopup(popup_469d86064d6b634c967e69162f2514ee)
+        ;
+
+        
+    
+    
+            var marker_62b903a88887d10cf67b1107a7ef168c = L.marker(
+                [19.41601, 72.80172],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_ffb44765e812ecb1038fb95b52e29abf = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_62b903a88887d10cf67b1107a7ef168c.setIcon(icon_ffb44765e812ecb1038fb95b52e29abf);
+        
+    
+        var popup_bfffdd2f079a5f936560c2c36846992f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_be97957fd11e09276463f884c3700f41 = $(`<div id="html_be97957fd11e09276463f884c3700f41" style="width: 100.0%; height: 100.0%;">                 <b>Madni Dhawakana</b><br>                 Type: Pharmacy<br>                 Distance: 0.62 km<br>                 Address: Madni Dhawakana, Samel Pada, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_bfffdd2f079a5f936560c2c36846992f.setContent(html_be97957fd11e09276463f884c3700f41);
+            
+        
+
+        marker_62b903a88887d10cf67b1107a7ef168c.bindPopup(popup_bfffdd2f079a5f936560c2c36846992f)
+        ;
+
+        
+    
+    
+            var marker_16cfc105fa9c981aecb5048b987932e6 = L.marker(
+                [19.415, 72.80483],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_4880a633664b930d17d5b6051003147c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_16cfc105fa9c981aecb5048b987932e6.setIcon(icon_4880a633664b930d17d5b6051003147c);
+        
+    
+        var popup_869104af603c86b180bee5251856abba = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2f163edda181f35f881700bf31b95a42 = $(`<div id="html_2f163edda181f35f881700bf31b95a42" style="width: 100.0%; height: 100.0%;">                 <b>Al Shifa Medical & General Stores</b><br>                 Type: Pharmacy<br>                 Distance: 0.64 km<br>                 Address: Al Shifa Medical & General Stores, Samel Pada, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_869104af603c86b180bee5251856abba.setContent(html_2f163edda181f35f881700bf31b95a42);
+            
+        
+
+        marker_16cfc105fa9c981aecb5048b987932e6.bindPopup(popup_869104af603c86b180bee5251856abba)
+        ;
+
+        
+    
+    
+            var marker_afe56413a182031526d4d273a09c4556 = L.marker(
+                [19.41662, 72.80112],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_555218c705399b7156ae50a8c6cb1946 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_afe56413a182031526d4d273a09c4556.setIcon(icon_555218c705399b7156ae50a8c6cb1946);
+        
+    
+        var popup_ea152effd32c0b4e5762f1115cf0d71d = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ce537d21089878f62c52229363568be9 = $(`<div id="html_ce537d21089878f62c52229363568be9" style="width: 100.0%; height: 100.0%;">                 <b>Generic Medicines</b><br>                 Type: Pharmacy<br>                 Distance: 0.69 km<br>                 Address: Generic Medicines, Laxmiben Cheda Marg, Samel Pada, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_ea152effd32c0b4e5762f1115cf0d71d.setContent(html_ce537d21089878f62c52229363568be9);
+            
+        
+
+        marker_afe56413a182031526d4d273a09c4556.bindPopup(popup_ea152effd32c0b4e5762f1115cf0d71d)
+        ;
+
+        
+    
+    
+            var marker_37df8c536ff7cee91066dce628384e70 = L.marker(
+                [19.41665, 72.80119],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_9f51b587c7d6d920157292c345138ac3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_37df8c536ff7cee91066dce628384e70.setIcon(icon_9f51b587c7d6d920157292c345138ac3);
+        
+    
+        var popup_1beeaeb8d14588f16aea387ceb9c3e7b = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e1ec8cc4879f8dce0bdb2149dd9757cf = $(`<div id="html_e1ec8cc4879f8dce0bdb2149dd9757cf" style="width: 100.0%; height: 100.0%;">                 <b>Ayurvedic Kendra</b><br>                 Type: Pharmacy<br>                 Distance: 0.69 km<br>                 Address: Ayurvedic Kendra, Laxmiben Cheda Marg, Samel Pada, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_1beeaeb8d14588f16aea387ceb9c3e7b.setContent(html_e1ec8cc4879f8dce0bdb2149dd9757cf);
+            
+        
+
+        marker_37df8c536ff7cee91066dce628384e70.bindPopup(popup_1beeaeb8d14588f16aea387ceb9c3e7b)
+        ;
+
+        
+    
+    
+            var marker_43fb6c8421a6d1f822c79c8ef8da9a93 = L.marker(
+                [19.41679, 72.80117],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_348f5a0d1b5e364dada32b8f59a92fb3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_43fb6c8421a6d1f822c79c8ef8da9a93.setIcon(icon_348f5a0d1b5e364dada32b8f59a92fb3);
+        
+    
+        var popup_f3556153dd7f798ca1b4b104334c5cc4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c418ea6edcf791c2081eb9d78ca1d152 = $(`<div id="html_c418ea6edcf791c2081eb9d78ca1d152" style="width: 100.0%; height: 100.0%;">                 <b>Ziniya Ayurvedic Aushadhalaya</b><br>                 Type: Pharmacy<br>                 Distance: 0.71 km<br>                 Address: Ziniya Ayurvedic Aushadhalaya, Nawala Village Road, Samel Pada, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_f3556153dd7f798ca1b4b104334c5cc4.setContent(html_c418ea6edcf791c2081eb9d78ca1d152);
+            
+        
+
+        marker_43fb6c8421a6d1f822c79c8ef8da9a93.bindPopup(popup_f3556153dd7f798ca1b4b104334c5cc4)
+        ;
+
+        
+    
+    
+            var marker_0a4c06c783e5f5bdf607cc5c226debf9 = L.marker(
+                [19.4171, 72.80084],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_f1c65c5fac15e887a56d4d6cdda0e494 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_0a4c06c783e5f5bdf607cc5c226debf9.setIcon(icon_f1c65c5fac15e887a56d4d6cdda0e494);
+        
+    
+        var popup_4a1725443a668e34fcd9752e25769c2f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_814a2cc5dde12e20ca06ac591ccd0e09 = $(`<div id="html_814a2cc5dde12e20ca06ac591ccd0e09" style="width: 100.0%; height: 100.0%;">                 <b>New Jeevan Medical</b><br>                 Type: Pharmacy<br>                 Distance: 0.74 km<br>                 Address: New Jeevan Medical, Samel Pada Road, Samel Pada, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_4a1725443a668e34fcd9752e25769c2f.setContent(html_814a2cc5dde12e20ca06ac591ccd0e09);
+            
+        
+
+        marker_0a4c06c783e5f5bdf607cc5c226debf9.bindPopup(popup_4a1725443a668e34fcd9752e25769c2f)
+        ;
+
+        
+    
+    
+            var marker_ffe946c286effe364e292fe74e903b50 = L.marker(
+                [19.41556, 72.80621],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_781790e74fe60a00336da6f516dd15bb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_ffe946c286effe364e292fe74e903b50.setIcon(icon_781790e74fe60a00336da6f516dd15bb);
+        
+    
+        var popup_2438f6c383b0283dac1e366ed6eb550f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_00734cd94f16c6b86621641703c313e9 = $(`<div id="html_00734cd94f16c6b86621641703c313e9" style="width: 100.0%; height: 100.0%;">                 <b>Pritak India</b><br>                 Type: Pharmacy<br>                 Distance: 0.78 km<br>                 Address: Pritak India, Samel Pada, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_2438f6c383b0283dac1e366ed6eb550f.setContent(html_00734cd94f16c6b86621641703c313e9);
+            
+        
+
+        marker_ffe946c286effe364e292fe74e903b50.bindPopup(popup_2438f6c383b0283dac1e366ed6eb550f)
+        ;
+
+        
+    
+    
+            var marker_8c13759e3fea158add3a86b722aeac44 = L.marker(
+                [19.41773, 72.80143],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_52a1aa189567ecbedb7fe49f29d1af4d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_8c13759e3fea158add3a86b722aeac44.setIcon(icon_52a1aa189567ecbedb7fe49f29d1af4d);
+        
+    
+        var popup_7c999a47a409aaddd650d38401a8e4e3 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_20f10d5698e639203361f6b3cab1a1b4 = $(`<div id="html_20f10d5698e639203361f6b3cab1a1b4" style="width: 100.0%; height: 100.0%;">                 <b>Sagar Medical</b><br>                 Type: Pharmacy<br>                 Distance: 0.81 km<br>                 Address: Sagar Medical, Laxmiben Cheda Marg, Samel Pada, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_7c999a47a409aaddd650d38401a8e4e3.setContent(html_20f10d5698e639203361f6b3cab1a1b4);
+            
+        
+
+        marker_8c13759e3fea158add3a86b722aeac44.bindPopup(popup_7c999a47a409aaddd650d38401a8e4e3)
+        ;
+
+        
+    
+    
+            var marker_613139f8e5282d080cccdf5e2e33e46a = L.marker(
+                [19.4149, 72.80844],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_d4a3b5727405311794256e532817904f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_613139f8e5282d080cccdf5e2e33e46a.setIcon(icon_d4a3b5727405311794256e532817904f);
+        
+    
+        var popup_167188f4c46ef954eb9385bd97ab1025 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_40581c424808b6df2ae0a48939efadf9 = $(`<div id="html_40581c424808b6df2ae0a48939efadf9" style="width: 100.0%; height: 100.0%;">                 <b>Yajas Pharmaceuticals</b><br>                 Type: Pharmacy<br>                 Distance: 0.91 km<br>                 Address: Yajas Pharmaceuticals, Panchal Nagar-Patankar Park, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_167188f4c46ef954eb9385bd97ab1025.setContent(html_40581c424808b6df2ae0a48939efadf9);
+            
+        
+
+        marker_613139f8e5282d080cccdf5e2e33e46a.bindPopup(popup_167188f4c46ef954eb9385bd97ab1025)
+        ;
+
+        
+    
+    
+            var marker_42075312b73f2bf28ebd9f3b3fe851f7 = L.marker(
+                [19.41501, 72.8084],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_59023cd7553dca09bc57c018fd9b0c9c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_42075312b73f2bf28ebd9f3b3fe851f7.setIcon(icon_59023cd7553dca09bc57c018fd9b0c9c);
+        
+    
+        var popup_1b0a8abdadce1f29c591b224248340ba = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_9021da589ff42f8378bf88a729406ab6 = $(`<div id="html_9021da589ff42f8378bf88a729406ab6" style="width: 100.0%; height: 100.0%;">                 <b>Bhavesh Medical</b><br>                 Type: Pharmacy<br>                 Distance: 0.91 km<br>                 Address: Bhavesh Medical, Laxmiben Chheda Marg, Panchal Nagar-Patankar Park, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_1b0a8abdadce1f29c591b224248340ba.setContent(html_9021da589ff42f8378bf88a729406ab6);
+            
+        
+
+        marker_42075312b73f2bf28ebd9f3b3fe851f7.bindPopup(popup_1b0a8abdadce1f29c591b224248340ba)
+        ;
+
+        
+    
+    
+            var marker_ebfa0cca15ef95ef2af2c56da1adeda4 = L.marker(
+                [19.41449, 72.80876],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_11b286de1e979497ca2411abb72bba00 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_ebfa0cca15ef95ef2af2c56da1adeda4.setIcon(icon_11b286de1e979497ca2411abb72bba00);
+        
+    
+        var popup_15445000dd40c58dcfee31373559da41 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_543459012d09f906bdd2328ca4d9c15e = $(`<div id="html_543459012d09f906bdd2328ca4d9c15e" style="width: 100.0%; height: 100.0%;">                 <b>Mayank Enterprise</b><br>                 Type: Pharmacy<br>                 Distance: 0.91 km<br>                 Address: Mayank Enterprise, Hanuman Nagar Road, Panchal Nagar-Patankar Park, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_15445000dd40c58dcfee31373559da41.setContent(html_543459012d09f906bdd2328ca4d9c15e);
+            
+        
+
+        marker_ebfa0cca15ef95ef2af2c56da1adeda4.bindPopup(popup_15445000dd40c58dcfee31373559da41)
+        ;
+
+        
+    
+    
+            var marker_5d3b87953b8e6678a2d54385e1f75f24 = L.marker(
+                [19.41864, 72.80252],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_e19a99133e148b9483cc197a83ded8e0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_5d3b87953b8e6678a2d54385e1f75f24.setIcon(icon_e19a99133e148b9483cc197a83ded8e0);
+        
+    
+        var popup_41f70713965de82dbfdce0c474882244 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_839c8996cb106b02add69cf81f68487e = $(`<div id="html_839c8996cb106b02add69cf81f68487e" style="width: 100.0%; height: 100.0%;">                 <b>NU Care Chemist</b><br>                 Type: Pharmacy<br>                 Distance: 0.92 km<br>                 Address: NU Care Chemist, Nawala Village Road, Samel Pada, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_41f70713965de82dbfdce0c474882244.setContent(html_839c8996cb106b02add69cf81f68487e);
+            
+        
+
+        marker_5d3b87953b8e6678a2d54385e1f75f24.bindPopup(popup_41f70713965de82dbfdce0c474882244)
+        ;
+
+        
+    
+    
+            var marker_0c2a6264fd3c6703dc0b013d090fffb3 = L.marker(
+                [19.41427, 72.80909],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_10127627c4e683f9f35bfc6178cc04b2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_0c2a6264fd3c6703dc0b013d090fffb3.setIcon(icon_10127627c4e683f9f35bfc6178cc04b2);
+        
+    
+        var popup_4bb8042d0f3af6fa10a8264344010883 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5a76f2cf5f34208ccfa1024d9d36749b = $(`<div id="html_5a76f2cf5f34208ccfa1024d9d36749b" style="width: 100.0%; height: 100.0%;">                 <b>Unipal Pharma</b><br>                 Type: Pharmacy<br>                 Distance: 0.93 km<br>                 Address: Unipal Pharma, Hanuman Nagar Road, Hanuman Nagar, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_4bb8042d0f3af6fa10a8264344010883.setContent(html_5a76f2cf5f34208ccfa1024d9d36749b);
+            
+        
+
+        marker_0c2a6264fd3c6703dc0b013d090fffb3.bindPopup(popup_4bb8042d0f3af6fa10a8264344010883)
+        ;
+
+        
+    
+    
+            var marker_c62da57a6c38866a9ffd07052401e9cd = L.marker(
+                [19.41869, 72.80335],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_cf83e62137328b85a3e3db949ece3bdd = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_c62da57a6c38866a9ffd07052401e9cd.setIcon(icon_cf83e62137328b85a3e3db949ece3bdd);
+        
+    
+        var popup_5300b5250658a6701dba7418065ff362 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a2f75fa95af7dbe2c7a6ae01677b47e7 = $(`<div id="html_a2f75fa95af7dbe2c7a6ae01677b47e7" style="width: 100.0%; height: 100.0%;">                 <b>Wani Chemist</b><br>                 Type: Pharmacy<br>                 Distance: 0.95 km<br>                 Address: Wani Chemist, Samel Pada, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_5300b5250658a6701dba7418065ff362.setContent(html_a2f75fa95af7dbe2c7a6ae01677b47e7);
+            
+        
+
+        marker_c62da57a6c38866a9ffd07052401e9cd.bindPopup(popup_5300b5250658a6701dba7418065ff362)
+        ;
+
+        
+    
+    
+            var marker_468cd5a466a28d6b655d660c92ffff8a = L.marker(
+                [19.41549, 72.80852],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_b9762e5e362fbf19cd6c24f9e48f6fda = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_468cd5a466a28d6b655d660c92ffff8a.setIcon(icon_b9762e5e362fbf19cd6c24f9e48f6fda);
+        
+    
+        var popup_f4c7d21330283da86aae1dce8f72deef = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_5b3b6996beecbebc8f6a2c3e39cbe3b9 = $(`<div id="html_5b3b6996beecbebc8f6a2c3e39cbe3b9" style="width: 100.0%; height: 100.0%;">                 <b>Paras Medico</b><br>                 Type: Pharmacy<br>                 Distance: 0.95 km<br>                 Address: Paras Medico, Laxmiben Chheda Marg, Panchal Nagar-Patankar Park, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_f4c7d21330283da86aae1dce8f72deef.setContent(html_5b3b6996beecbebc8f6a2c3e39cbe3b9);
+            
+        
+
+        marker_468cd5a466a28d6b655d660c92ffff8a.bindPopup(popup_f4c7d21330283da86aae1dce8f72deef)
+        ;
+
+        
+    
+    
+            var marker_8084b29faf9dd2743e9dcbe01db4774f = L.marker(
+                [19.41544, 72.80861],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_2245f1d46f221273c700500b0d11793d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_8084b29faf9dd2743e9dcbe01db4774f.setIcon(icon_2245f1d46f221273c700500b0d11793d);
+        
+    
+        var popup_ccbed564e24b272f05b425d2eccfa0b2 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_3b2c7492cf8e669655654d71b00a6663 = $(`<div id="html_3b2c7492cf8e669655654d71b00a6663" style="width: 100.0%; height: 100.0%;">                 <b>Jai Malhar Chemist & Druggist</b><br>                 Type: Pharmacy<br>                 Distance: 0.96 km<br>                 Address: Jai Malhar Chemist & Druggist, Laxmiben Chheda Marg, Panchal Nagar-Patankar Park, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_ccbed564e24b272f05b425d2eccfa0b2.setContent(html_3b2c7492cf8e669655654d71b00a6663);
+            
+        
+
+        marker_8084b29faf9dd2743e9dcbe01db4774f.bindPopup(popup_ccbed564e24b272f05b425d2eccfa0b2)
+        ;
+
+        
+    
+    
+            var marker_5f8ebd25368f39fbfde24b48e3559015 = L.marker(
+                [19.41321, 72.81006],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_d14bebb0d356a73a81ce567851e02533 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_5f8ebd25368f39fbfde24b48e3559015.setIcon(icon_d14bebb0d356a73a81ce567851e02533);
+        
+    
+        var popup_731eb93065832c61151dafe267c2e273 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_70215e40f4f826c3286968e74ec7734b = $(`<div id="html_70215e40f4f826c3286968e74ec7734b" style="width: 100.0%; height: 100.0%;">                 <b>Kamleshwari Medical</b><br>                 Type: Pharmacy<br>                 Distance: 0.98 km<br>                 Address: Kamleshwari Medical, Hanuman Nagar Road, Panchal Nagar-Hanuman Nagar, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_731eb93065832c61151dafe267c2e273.setContent(html_70215e40f4f826c3286968e74ec7734b);
+            
+        
+
+        marker_5f8ebd25368f39fbfde24b48e3559015.bindPopup(popup_731eb93065832c61151dafe267c2e273)
+        ;
+
+        
+    
+    
+            var marker_c753f2a501dfad49955775de231f9393 = L.marker(
+                [19.41326, 72.81021],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_4dceac431d853a5462ebb2a6d4230e02 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_c753f2a501dfad49955775de231f9393.setIcon(icon_4dceac431d853a5462ebb2a6d4230e02);
+        
+    
+        var popup_466ec236473c2b67d865e1cf0f641526 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_f0971a43c4020c7ecac50d19606ca1b2 = $(`<div id="html_f0971a43c4020c7ecac50d19606ca1b2" style="width: 100.0%; height: 100.0%;">                 <b>Chatana Medical</b><br>                 Type: Pharmacy<br>                 Distance: 1.0 km<br>                 Address: Chatana Medical, Hanuman Nagar Road, Panchal Nagar-Hanuman Nagar, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_466ec236473c2b67d865e1cf0f641526.setContent(html_f0971a43c4020c7ecac50d19606ca1b2);
+            
+        
+
+        marker_c753f2a501dfad49955775de231f9393.bindPopup(popup_466ec236473c2b67d865e1cf0f641526)
+        ;
+
+        
+    
+    
+            var marker_0a8579d95050df56b7b0836468aede6c = L.marker(
+                [19.41977, 72.80179],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_905250bd22261e07bb6c33ff7b1f44dd = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_0a8579d95050df56b7b0836468aede6c.setIcon(icon_905250bd22261e07bb6c33ff7b1f44dd);
+        
+    
+        var popup_a4105f241ade09d847c03c8b37fb1c11 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_afdab59b5ea69f25880380d464a9c52f = $(`<div id="html_afdab59b5ea69f25880380d464a9c52f" style="width: 100.0%; height: 100.0%;">                 <b>Sai Sagar Medical</b><br>                 Type: Pharmacy<br>                 Distance: 1.04 km<br>                 Address: Sai Sagar Medical, Samel Pada, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_a4105f241ade09d847c03c8b37fb1c11.setContent(html_afdab59b5ea69f25880380d464a9c52f);
+            
+        
+
+        marker_0a8579d95050df56b7b0836468aede6c.bindPopup(popup_a4105f241ade09d847c03c8b37fb1c11)
+        ;
+
+        
+    
+    
+            var marker_ebfd23b1ebf567d67be68538cc13d95a = L.marker(
+                [19.41826, 72.79549],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_d3df56fed0c2499fceabd994bcdd8e96 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_ebfd23b1ebf567d67be68538cc13d95a.setIcon(icon_d3df56fed0c2499fceabd994bcdd8e96);
+        
+    
+        var popup_90cf09187447c4e8b49d627e960acc69 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_648c028b3f3192059fceec25d56997c9 = $(`<div id="html_648c028b3f3192059fceec25d56997c9" style="width: 100.0%; height: 100.0%;">                 <b>New Matoshree Lila Medical & General Stores</b><br>                 Type: Pharmacy<br>                 Distance: 1.06 km<br>                 Address: New Matoshree Lila Medical & General Stores, Nale Road, Umrale, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_90cf09187447c4e8b49d627e960acc69.setContent(html_648c028b3f3192059fceec25d56997c9);
+            
+        
+
+        marker_ebfd23b1ebf567d67be68538cc13d95a.bindPopup(popup_90cf09187447c4e8b49d627e960acc69)
+        ;
+
+        
+    
+    
+            var marker_6ace53735d48241adb0a7b80d044c58f = L.marker(
+                [19.42011, 72.80019],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_9682e455b44f75c7233421bfe0cfd078 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_6ace53735d48241adb0a7b80d044c58f.setIcon(icon_9682e455b44f75c7233421bfe0cfd078);
+        
+    
+        var popup_aeae2665b250f8d560dbe94be7e4a5c0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8f3ca3d7543759dff78e82fc15eeef90 = $(`<div id="html_8f3ca3d7543759dff78e82fc15eeef90" style="width: 100.0%; height: 100.0%;">                 <b>Sukhkarta Medical</b><br>                 Type: Pharmacy<br>                 Distance: 1.08 km<br>                 Address: Sukhkarta Medical, Samel Pada, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_aeae2665b250f8d560dbe94be7e4a5c0.setContent(html_8f3ca3d7543759dff78e82fc15eeef90);
+            
+        
+
+        marker_6ace53735d48241adb0a7b80d044c58f.bindPopup(popup_aeae2665b250f8d560dbe94be7e4a5c0)
+        ;
+
+        
+    
+    
+            var marker_d8403b4afb77db83cc50f84be078eb69 = L.marker(
+                [19.4201, 72.80008],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_0c1865f8b4ad6ad98e314017ce12d5e8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_d8403b4afb77db83cc50f84be078eb69.setIcon(icon_0c1865f8b4ad6ad98e314017ce12d5e8);
+        
+    
+        var popup_94947d51f1d9e24cb8a1ef33a7ea3863 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8bd25aa68aa50d56a1fb4224e8ca7afc = $(`<div id="html_8bd25aa68aa50d56a1fb4224e8ca7afc" style="width: 100.0%; height: 100.0%;">                 <b>Green Life Pharma</b><br>                 Type: Pharmacy<br>                 Distance: 1.08 km<br>                 Address: Green Life Pharma, Samel Pada, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_94947d51f1d9e24cb8a1ef33a7ea3863.setContent(html_8bd25aa68aa50d56a1fb4224e8ca7afc);
+            
+        
+
+        marker_d8403b4afb77db83cc50f84be078eb69.bindPopup(popup_94947d51f1d9e24cb8a1ef33a7ea3863)
+        ;
+
+        
+    
+    
+            var marker_862cb0d9669682d0af52b4350be7fb6e = L.marker(
+                [19.42053, 72.80231],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_e69767e31ecb4cb355fe829aee47914f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_862cb0d9669682d0af52b4350be7fb6e.setIcon(icon_e69767e31ecb4cb355fe829aee47914f);
+        
+    
+        var popup_e0561b3ca003a01b0c409cfb5295e2a4 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2c1d78484f2d95fb464591580ef43780 = $(`<div id="html_2c1d78484f2d95fb464591580ef43780" style="width: 100.0%; height: 100.0%;">                 <b>Sanjana Medical</b><br>                 Type: Pharmacy<br>                 Distance: 1.13 km<br>                 Address: Sanjana Medical, Datta Mandir Road, Samel Pada, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_e0561b3ca003a01b0c409cfb5295e2a4.setContent(html_2c1d78484f2d95fb464591580ef43780);
+            
+        
+
+        marker_862cb0d9669682d0af52b4350be7fb6e.bindPopup(popup_e0561b3ca003a01b0c409cfb5295e2a4)
+        ;
+
+        
+    
+    
+            var marker_b0b19af9ceff210ff3654770613e4230 = L.marker(
+                [19.40239, 72.79427],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_d5ea99a1f0d9f43fb274210530bd1109 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_b0b19af9ceff210ff3654770613e4230.setIcon(icon_d5ea99a1f0d9f43fb274210530bd1109);
+        
+    
+        var popup_0925af2307801f2541124af9b5251c82 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_2ebecc1011249ef3751bee90b233eb21 = $(`<div id="html_2ebecc1011249ef3751bee90b233eb21" style="width: 100.0%; height: 100.0%;">                 <b>Vikas Medical</b><br>                 Type: Pharmacy<br>                 Distance: 1.15 km<br>                 Address: Vikas Medical, Gass Road, Gass, Nalasopara West, Nalasopara 401304, India<br>             </div>`)[0];
+                popup_0925af2307801f2541124af9b5251c82.setContent(html_2ebecc1011249ef3751bee90b233eb21);
+            
+        
+
+        marker_b0b19af9ceff210ff3654770613e4230.bindPopup(popup_0925af2307801f2541124af9b5251c82)
+        ;
+
+        
+    
+    
+            var marker_70ff93ebcdb424ef38883cd36103552a = L.marker(
+                [19.41194, 72.81207],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_5858a753c48afdb553a097e347fc39c7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_70ff93ebcdb424ef38883cd36103552a.setIcon(icon_5858a753c48afdb553a097e347fc39c7);
+        
+    
+        var popup_956df48ae2b5533693118b66bcf27526 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_de3587c865d7a73afc65fcdbb80a112a = $(`<div id="html_de3587c865d7a73afc65fcdbb80a112a" style="width: 100.0%; height: 100.0%;">                 <b>Ajinkya Medical</b><br>                 Type: Pharmacy<br>                 Distance: 1.15 km<br>                 Address: Ajinkya Medical, Panchal Nagar-Hanuman Nagar, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_956df48ae2b5533693118b66bcf27526.setContent(html_de3587c865d7a73afc65fcdbb80a112a);
+            
+        
+
+        marker_70ff93ebcdb424ef38883cd36103552a.bindPopup(popup_956df48ae2b5533693118b66bcf27526)
+        ;
+
+        
+    
+    
+            var marker_3edc8b4cc9cc3d22263134bb684f65a3 = L.marker(
+                [19.4197, 72.80621],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_83c756fd9c25c12632be361da7e9b9fc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_3edc8b4cc9cc3d22263134bb684f65a3.setIcon(icon_83c756fd9c25c12632be361da7e9b9fc);
+        
+    
+        var popup_de29fffb417551aa80e1e2e6d51837e0 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_b063d4ba6e587f691c0453bfc411162e = $(`<div id="html_b063d4ba6e587f691c0453bfc411162e" style="width: 100.0%; height: 100.0%;">                 <b>Mahi Medical</b><br>                 Type: Pharmacy<br>                 Distance: 1.16 km<br>                 Address: Mahi Medical, Laxmiben Cheda Marg, Samel Pada, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_de29fffb417551aa80e1e2e6d51837e0.setContent(html_b063d4ba6e587f691c0453bfc411162e);
+            
+        
+
+        marker_3edc8b4cc9cc3d22263134bb684f65a3.bindPopup(popup_de29fffb417551aa80e1e2e6d51837e0)
+        ;
+
+        
+    
+    
+            var marker_7666fb82eb5be6e5abb2cdc787aa77c6 = L.marker(
+                [19.4128, 72.81235],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_27fcfb2ee9f662730b0133de05290db0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_7666fb82eb5be6e5abb2cdc787aa77c6.setIcon(icon_27fcfb2ee9f662730b0133de05290db0);
+        
+    
+        var popup_3c8b490df78ea9c03742cf4fcb02e92f = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_a9827bc32bd63635c7912c20e28693c2 = $(`<div id="html_a9827bc32bd63635c7912c20e28693c2" style="width: 100.0%; height: 100.0%;">                 <b>Wellcare Medical & General Store</b><br>                 Type: Pharmacy<br>                 Distance: 1.2 km<br>                 Address: Wellcare Medical & General Store, Panchal Nagar-Hanuman Nagar, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_3c8b490df78ea9c03742cf4fcb02e92f.setContent(html_a9827bc32bd63635c7912c20e28693c2);
+            
+        
+
+        marker_7666fb82eb5be6e5abb2cdc787aa77c6.bindPopup(popup_3c8b490df78ea9c03742cf4fcb02e92f)
+        ;
+
+        
+    
+    
+            var marker_307e615784edf6ad483de4bb890cc13b = L.marker(
+                [19.41943, 72.80769],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_8208bdef082e9cf6274f6db683476e67 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_307e615784edf6ad483de4bb890cc13b.setIcon(icon_8208bdef082e9cf6274f6db683476e67);
+        
+    
+        var popup_2a68977ee8503e1c66345b8e01175fef = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ef2609112699a83016081cbc48a1b2e9 = $(`<div id="html_ef2609112699a83016081cbc48a1b2e9" style="width: 100.0%; height: 100.0%;">                 <b>Aarogyam Generic Medical Store</b><br>                 Type: Pharmacy<br>                 Distance: 1.21 km<br>                 Address: Aarogyam Generic Medical Store, Laxmiben Cheda Marg, Samel Pada, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_2a68977ee8503e1c66345b8e01175fef.setContent(html_ef2609112699a83016081cbc48a1b2e9);
+            
+        
+
+        marker_307e615784edf6ad483de4bb890cc13b.bindPopup(popup_2a68977ee8503e1c66345b8e01175fef)
+        ;
+
+        
+    
+    
+            var marker_8fdad45bf02c8d9f20bff645ee79367f = L.marker(
+                [19.41353, 72.81234],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_7f0ecaad05197ad6e32167177b266646 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_8fdad45bf02c8d9f20bff645ee79367f.setIcon(icon_7f0ecaad05197ad6e32167177b266646);
+        
+    
+        var popup_d9eda9574f745cca87239bf5d60b49db = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8640db4904884c16ec0960aac12d625d = $(`<div id="html_8640db4904884c16ec0960aac12d625d" style="width: 100.0%; height: 100.0%;">                 <b>Shri Ram Samarth Medical</b><br>                 Type: Pharmacy<br>                 Distance: 1.22 km<br>                 Address: Shri Ram Samarth Medical, Hanuman Nagar Road, Panchal Nagar-Hanuman Nagar, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_d9eda9574f745cca87239bf5d60b49db.setContent(html_8640db4904884c16ec0960aac12d625d);
+            
+        
+
+        marker_8fdad45bf02c8d9f20bff645ee79367f.bindPopup(popup_d9eda9574f745cca87239bf5d60b49db)
+        ;
+
+        
+    
+    
+            var marker_98d4afaf15b1bea2fe9183fcd118034d = L.marker(
+                [19.41944, 72.8083],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_a67f4b928f3e63a0e8b23d8008c972bc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_98d4afaf15b1bea2fe9183fcd118034d.setIcon(icon_a67f4b928f3e63a0e8b23d8008c972bc);
+        
+    
+        var popup_b40c4b4ce0cbb4521921c0110b7b072a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e7ebeee9de5b5da7d8b68dfc4f6dfae9 = $(`<div id="html_e7ebeee9de5b5da7d8b68dfc4f6dfae9" style="width: 100.0%; height: 100.0%;">                 <b>Janta Medical</b><br>                 Type: Pharmacy<br>                 Distance: 1.25 km<br>                 Address: Janta Medical, Laxmiben Chheda Marg, Panchal Nagar-Laxmiben Chheda Nagar, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_b40c4b4ce0cbb4521921c0110b7b072a.setContent(html_e7ebeee9de5b5da7d8b68dfc4f6dfae9);
+            
+        
+
+        marker_98d4afaf15b1bea2fe9183fcd118034d.bindPopup(popup_b40c4b4ce0cbb4521921c0110b7b072a)
+        ;
+
+        
+    
+    
+            var marker_fa54955edc97f63dd39bf1c9e77c9d50 = L.marker(
+                [19.41367, 72.8128],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_fdf5a96e5ebaf6ef0cf890b621fcb6bb = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_fa54955edc97f63dd39bf1c9e77c9d50.setIcon(icon_fdf5a96e5ebaf6ef0cf890b621fcb6bb);
+        
+    
+        var popup_ed3b5c6aab2c3e2e627267f2106eb323 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_ee6f9b33f636df0a1346ce6e2217fd15 = $(`<div id="html_ee6f9b33f636df0a1346ce6e2217fd15" style="width: 100.0%; height: 100.0%;">                 <b>Swastik Medical & General Store</b><br>                 Type: Pharmacy<br>                 Distance: 1.27 km<br>                 Address: Swastik Medical & General Store, Hanuman Nagar Road, Panchal Nagar-Hanuman Nagar, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_ed3b5c6aab2c3e2e627267f2106eb323.setContent(html_ee6f9b33f636df0a1346ce6e2217fd15);
+            
+        
+
+        marker_fa54955edc97f63dd39bf1c9e77c9d50.bindPopup(popup_ed3b5c6aab2c3e2e627267f2106eb323)
+        ;
+
+        
+    
+    
+            var marker_cf372f5c5d412578e2c460d11382bdef = L.marker(
+                [19.41563, 72.81211],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_54f97a8c53bb39b1d6e43759a206ff8b = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_cf372f5c5d412578e2c460d11382bdef.setIcon(icon_54f97a8c53bb39b1d6e43759a206ff8b);
+        
+    
+        var popup_088483d599cd05aebb09b90ea9a31ce6 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_c945a0a63c38c517e37321ec5a24ae05 = $(`<div id="html_c945a0a63c38c517e37321ec5a24ae05" style="width: 100.0%; height: 100.0%;">                 <b>Balaji Medical</b><br>                 Type: Pharmacy<br>                 Distance: 1.28 km<br>                 Address: Balaji Medical, Patankar Park Road, Panchal Nagar-Patankar Park, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_088483d599cd05aebb09b90ea9a31ce6.setContent(html_c945a0a63c38c517e37321ec5a24ae05);
+            
+        
+
+        marker_cf372f5c5d412578e2c460d11382bdef.bindPopup(popup_088483d599cd05aebb09b90ea9a31ce6)
+        ;
+
+        
+    
+    
+            var marker_f64c09893142359cc292af42554eb8c5 = L.marker(
+                [19.41636, 72.81181],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_219d8cb9815396ed33ecb2b2edb411d6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_f64c09893142359cc292af42554eb8c5.setIcon(icon_219d8cb9815396ed33ecb2b2edb411d6);
+        
+    
+        var popup_6872f23db8354b53350f3aa26af49699 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_e1b80d58ad8668afdaf0ac12ba4616eb = $(`<div id="html_e1b80d58ad8668afdaf0ac12ba4616eb" style="width: 100.0%; height: 100.0%;">                 <b>Bhavani Medico</b><br>                 Type: Pharmacy<br>                 Distance: 1.3 km<br>                 Address: Bhavani Medico, Shani Mandir Road, Panchal Nagar-Patankar Park, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_6872f23db8354b53350f3aa26af49699.setContent(html_e1b80d58ad8668afdaf0ac12ba4616eb);
+            
+        
+
+        marker_f64c09893142359cc292af42554eb8c5.bindPopup(popup_6872f23db8354b53350f3aa26af49699)
+        ;
+
+        
+    
+    
+            var marker_1c29c3e150f197b37d5f02976d48d1cd = L.marker(
+                [19.41792, 72.81078],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_7eb4acdd82435e3dcd1f6844f3353ced = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_1c29c3e150f197b37d5f02976d48d1cd.setIcon(icon_7eb4acdd82435e3dcd1f6844f3353ced);
+        
+    
+        var popup_4100814a0cad745d9a1f272ee2ed357a = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_8d232a87c536abd83817cfdf9df9ae36 = $(`<div id="html_8d232a87c536abd83817cfdf9df9ae36" style="width: 100.0%; height: 100.0%;">                 <b>Vishal Medical & General Store</b><br>                 Type: Pharmacy<br>                 Distance: 1.31 km<br>                 Address: Vishal Medical & General Store, Panchal Nagar-Patankar Park, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_4100814a0cad745d9a1f272ee2ed357a.setContent(html_8d232a87c536abd83817cfdf9df9ae36);
+            
+        
+
+        marker_1c29c3e150f197b37d5f02976d48d1cd.bindPopup(popup_4100814a0cad745d9a1f272ee2ed357a)
+        ;
+
+        
+    
+    
+            var marker_58e44b498980a20a774228c618468601 = L.marker(
+                [19.41653, 72.81219],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_540c94c0fd7ee9085b76b0fc77f5ec79 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_58e44b498980a20a774228c618468601.setIcon(icon_540c94c0fd7ee9085b76b0fc77f5ec79);
+        
+    
+        var popup_b5ea6bf5e93ea1f6d7d9ec15a3d992c2 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_86893cd605ebb409a0f9226c327fef1d = $(`<div id="html_86893cd605ebb409a0f9226c327fef1d" style="width: 100.0%; height: 100.0%;">                 <b>Siddhivinayak Medical</b><br>                 Type: Pharmacy<br>                 Distance: 1.34 km<br>                 Address: Siddhivinayak Medical, Patankar Park Road, Panchal Nagar, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_b5ea6bf5e93ea1f6d7d9ec15a3d992c2.setContent(html_86893cd605ebb409a0f9226c327fef1d);
+            
+        
+
+        marker_58e44b498980a20a774228c618468601.bindPopup(popup_b5ea6bf5e93ea1f6d7d9ec15a3d992c2)
+        ;
+
+        
+    
+    
+            var marker_f39a2385deff59813aca0731b1656a4f = L.marker(
+                [19.41761, 72.81182],
+                {}
+            ).addTo(map_25b5a54ed8decb73b13c2a18dede0d75);
+        
+    
+            var icon_62295bf3a461dde76017b8108b096702 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_f39a2385deff59813aca0731b1656a4f.setIcon(icon_62295bf3a461dde76017b8108b096702);
+        
+    
+        var popup_e112fa06b35ab56a40cc2e4a0a2c0b11 = L.popup({"maxWidth": 300});
+
+        
+            
+                var html_605161fe89dff0fc8922efe09d089056 = $(`<div id="html_605161fe89dff0fc8922efe09d089056" style="width: 100.0%; height: 100.0%;">                 <b>Satyam Medical</b><br>                 Type: Pharmacy<br>                 Distance: 1.37 km<br>                 Address: Satyam Medical, Patankar Park Road, Panchal Nagar-Patankar Park, Nalasopara West, Nalasopara 401203, India<br>             </div>`)[0];
+                popup_e112fa06b35ab56a40cc2e4a0a2c0b11.setContent(html_605161fe89dff0fc8922efe09d089056);
+            
+        
+
+        marker_f39a2385deff59813aca0731b1656a4f.bindPopup(popup_e112fa06b35ab56a40cc2e4a0a2c0b11)
+        ;
+
+        
+    
+</script>
+</html>

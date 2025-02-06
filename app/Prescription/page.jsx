@@ -3,12 +3,13 @@ import React, { useState } from 'react';
 import { Button } from "../../Components/ui/button";
 import { Input } from "../../Components/ui/input";
 import { RiSendPlaneFill } from "react-icons/ri";
-import { BsFillClipboardDataFill } from "react-icons/bs";
-import { LuNewspaper } from "react-icons/lu";
+
 import Image from 'next/image';
 import { Bounce, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../app/globals.css'
+import Location from './location';
+import Doctors from './doctors';
 
 
 
@@ -44,7 +45,7 @@ const Page = () => {
             try {
                 //https://medisense-backend.onrender.com
                 //http://localhost:5001/brand
-                const response = await fetch('http://localhost:5000/brand', {
+                const response = await fetch('https://medisense-backend.onrender.com/brand', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -238,36 +239,8 @@ const Page = () => {
                 progressClassName="toastProgress"
                 bodyClassName="toastBody"
             />
-            <div className='fixed bottom-0 left-0 hidden md:block'>
-                <div className="drawer">
-                    <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-                    <div className="drawer-content">
-                        {/* Page content here */}
-                        <label htmlFor="my-drawer" className="btn drawer-button bg-transparent shadow-none"><BsFillClipboardDataFill size={20} className='text-[#1A2238]' /></label>
-                    </div>
-                    <div className="drawer-side">
-                        <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
-                        <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-                            <li><a>Sidebar Item 1</a></li>
-                            <li><a>Sidebar Item 2</a></li>
-                            <li>
-                                <div className=' display inline mt-16'>
-                                    <p className=' text-center text-base'><b>Dr Queency Gonsalves</b></p>
-                                    <p className=' text-center font-semibold pt-4'>MBBS from GMC Jalgaon</p>
-                                    <p className=' text-center pt-2'>Intern at Government Hospital Jalgaon</p>
-                                </div>
-                            </li>
-                            <li>
-                                <div className=' display inline mt-20'>
-                                    <p className=' text-center text-base'><b>Dr Sonam Gupta</b></p>
-                                    <p className=' text-center font-semibold pt-4'>MBBS from GMC Jalgaon</p>
-                                    <p className=' text-center pt-2'>Intern at Government Hospital Jalgaon</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+
+           <Doctors /> 
 
             <div className='w-full fixed bottom-0 flex justify-center align-middle items-center mb-5 px-5'>
                 <div className="flex w-full max-w-3xl items-center space-x-2 relative">
@@ -289,83 +262,7 @@ const Page = () => {
                 </div>
             </div>
 
-            <div className='fixed bottom-0 right-0 hidden md:block'>
-                <div className="drawer drawer-end">
-                    <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-                    <div className="drawer-content">
-                        {/* Page content here */}
-                        <label htmlFor="my-drawer-4" className="btn drawer-button bg-transparent shadow-none"><LuNewspaper size={20} className='text-[LuNewspaper]' /></label>
-                    </div>
-                    <div className="drawer-side">
-                        <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-                        <ul className="menu p-4 w-auto min-h-full bg-base-200 text-base-content">
-                            <li><a>Sidebar Item 1</a></li>
-                            <li><a>Sidebar Item 2</a></li>
-                            <li><div className="card w-96 bg-base-100 shadow-xl m-4">
-                                <div className="card-body">
-                                    <div className=' flex justify-normal'>
-                                        <div className="avatar">
-                                            <div className="mask mask-circle h-14 w-14">
-                                                <img
-                                                    src="https://th.bing.com/th/id/R.d4e2cbd37fba619ce8c0cc2fa3976046?rik=W0mXsqAkNIYChw&riu=http%3a%2f%2fwww.north-faceoutletonlines.net%2fwp-content%2fuploads%2f2020%2f05%2fasdfsdgasdfsdaf.jpg&ehk=yA2dnvKILMpFwLggXDfswKxo%2be3mVghczeZJ5oXSaNY%3d&risl=&pid=ImgRaw&r=0"
-                                                    alt="Avatar Tailwind CSS Component" />
-                                            </div>
-                                        </div>
-                                        <h2 className="card-title ml-2">Angan Medical</h2>
-                                    </div>
-                                    <p className='font-semibold'>Pharmacy</p>
-                                    <p>Shop no 7, Poonam Arena, YK Nagar, Virar West, Virar, Maharashtra ·</p>
-                                    <p>7030778747</p>
-                                    <p className='text-green-500'>Open 24 Hours</p>
-                                </div>
-                            </div>
-                            </li>
-
-                            <li><div className="card w-96 bg-base-100 shadow-xl m-4">
-                                <div className="card-body">
-                                    <div className=' flex justify-normal'>
-                                        <div className="avatar">
-                                            <div className="mask mask-circle h-14 w-14">
-                                                <img
-                                                    src="https://th.bing.com/th/id/OIP.1SUdTBn8RGEd0aX6p0Pe_QHaJ4?w=480&h=640&rs=1&pid=ImgDetMain"
-                                                    alt="Avatar Tailwind CSS Component" />
-                                            </div>
-                                        </div>
-                                        <h2 className="card-title ml-2">Dev Balaji Medical</h2>
-                                    </div>
-                                    <p className='font-semibold'>Medical Supply</p>
-                                    <p>Shop No 2,Ostwal Nagari, Central Park Road, Nalasopara, Maharashtra</p>
-                                    <p>7249735828</p>
-                                    <p className='text-green-500'>Open 24 Hours</p>
-                                </div>
-                            </div>
-                            </li>
-
-
-                            <li><div className="card w-96 bg-base-100 shadow-xl m-4">
-                                <div className="card-body">
-                                    <div className=' flex justify-normal'>
-                                        <div className="avatar">
-                                            <div className="mask mask-circle h-14 w-14">
-                                                <img
-                                                    src="https://th.bing.com/th/id/OIP.KDgF5j4N1cXbLrazvJopOwHaHa?w=600&h=600&rs=1&pid=ImgDetMain"
-                                                    alt="Avatar Tailwind CSS Component" />
-                                            </div>
-                                        </div>
-                                        <h2 className="card-title ml-2">Sahyog Medical</h2>
-                                    </div>
-                                    <p className='font-semibold'>Pharmacy</p>
-                                    <p>B/C-31, Dube Estate, Nalasopara, Thane, Maharashtra 401209 · 1.2 km</p>
-                                    <p>9970851627</p>
-                                    <p className='text-green-500'>Open 24 Hours</p>
-                                </div>
-                            </div>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
+           <Location />
 
 
             <div className='mt-24 lg:mt-28'>
