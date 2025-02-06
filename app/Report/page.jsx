@@ -11,6 +11,7 @@ import { Bounce, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import '../../app/globals.css'
 
+
 const Page = () => {
   const [file, setFile] = useState(null);
   const [summary, setSummary] = useState('');
@@ -39,7 +40,7 @@ const Page = () => {
         progress: undefined,
         theme: "light",
         transition: Bounce,
-        });
+      });
       return;
     }
 
@@ -49,7 +50,7 @@ const Page = () => {
     try {
       // https://medisense-backend.onrender.com
       // http://localhost:5000/upload
-      const response = await fetch('https://medisense-backend.onrender.com/upload', {
+      const response = await fetch('http://localhost:5000/upload', {
         method: 'POST',
         body: formData,
       });
@@ -74,7 +75,7 @@ const Page = () => {
           progress: undefined,
           theme: "light",
           transition: Bounce,
-          });
+        });
       }
     } catch (error) {
       toast.error('Something went wrong, Try again', {
@@ -87,9 +88,27 @@ const Page = () => {
         progress: undefined,
         theme: "light",
         transition: Bounce,
-        });
+      });
       console.error('Error:', error.message);
     }
+
+    try {
+      const response = await fetch("http://localhost:5000/savefolder", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        alert("File uploaded successfully!");
+      } else {
+        alert("File upload failed.");
+      }
+    } catch (error) {
+      console.error("Error uploading file:", error);
+      alert("Error uploading file.");
+    }
+
+
   };
 
   const handleQuestionChange = (e) => {
@@ -108,10 +127,10 @@ const Page = () => {
         progress: undefined,
         theme: "light",
         transition: Bounce,
-        });
+      });
     } else {
       try {
-        const response = await fetch('http://127.0.0.1:5003/', {
+        const response = await fetch('http://127.0.0.1:5000/ask', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -130,12 +149,12 @@ const Page = () => {
             progress: undefined,
             theme: "light",
             transition: Bounce,
-            });
+          });
           throw new Error('Network response was not ok');
         }
 
         const data = await response.json();
-        const answer = data.recommendations.replace(/[\*>#]/g, '')
+        const answer = data.answer.replace(/[\*>#]/g, '')
         SetAns(answer)
         setChatHistory([...chatHistory, { question, answer }]);
         console.log(answer);
@@ -152,7 +171,7 @@ const Page = () => {
           progress: undefined,
           theme: "light",
           transition: Bounce,
-          });
+        });
       }
     }
   };
@@ -160,8 +179,8 @@ const Page = () => {
   return (
     <div>
       <ToastContainer
-      progressClassName="toastProgress"
-  bodyClassName="toastBody"
+        progressClassName="toastProgress"
+        bodyClassName="toastBody"
       />
       <div className='mt-24 lg:mt-32 flex justify-center lg:gap-10 items-center align-middle gap-5 mx-1'>
         <Input
@@ -173,6 +192,7 @@ const Page = () => {
         <Button type="submit" className={`border border-[#182C4E] text-[#182C4E] bg-transparent font-bold hover:bg-[#182C4E] hover:text-white ${loader ? 'bg-[#182C4E]' : ''}`} onClick={handleSummarizeClick}>{loader ? <Image src="/loader.gif" alt='' height={30} width={30} className=' font-extrabold text-lg' /> : 'Upload'}</Button>
         {showDrawer ? <Drawer>
           <DrawerTrigger className='border border-[#182C4E] bg-transparent font-bold hover:bg-[#182C4E] hover:text-white p-2 rounded-md'>Summarize</DrawerTrigger>
+          
           <DrawerContent className='bg-white'>
             <DrawerHeader>
               <DrawerTitle className='text-[#D45028]'>Summary Of Your Report</DrawerTitle>
@@ -207,10 +227,10 @@ const Page = () => {
         </div>
       </div>
       {!ans && (
-            <div className='flex justify-center align-middle items-center lg:mt-52 mt-52 opacity-70 h-20'>
-            <img src="https://hrsoftbd.com/assets/servicePhoto/onlinedoctor_20221117111818.gif" alt="" className='h-[400px]'/>
-          </div>
-          ) }
+        <div className='flex justify-center align-middle items-center lg:mt-52 mt-52 opacity-70 h-20'>
+          <img src="https://hrsoftbd.com/assets/servicePhoto/onlinedoctor_20221117111818.gif" alt="" className='h-[400px]' />
+        </div>
+      )}
       <div className='mt-10'>
         {/* Chat bubbles */}
         <div className="chat chat-start">
@@ -218,9 +238,9 @@ const Page = () => {
           </div>
         </div>
         <div className='mt-10 flex justify-center overflow-hidden'>
-        
+
           <div className='mt-10 w-4/5 items-center align-middle overflow-y-auto style={{ maxWidth: 100%, maxHeight: 100vh }}'>
-          
+
             {chatHistory.map((chat, index) => (
               <div key={index}>
                 <div className="chat chat-start">

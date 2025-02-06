@@ -24,6 +24,10 @@ const menuItems = [
     name: 'Monitor',
     href: '/Monitor',
   },
+  {
+    name: 'Analysis',
+    href: '/Analysis',
+  },
 ]
 
 export default function Navbar() {

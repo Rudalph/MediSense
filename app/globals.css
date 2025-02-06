@@ -65,3 +65,22 @@ body {
 .toastProgress {
   background: #D45028 !important;
 }
+
+.graph-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+canvas {
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}

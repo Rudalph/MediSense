@@ -44,7 +44,7 @@ const Page = () => {
             try {
                 //https://medisense-backend.onrender.com
                 //http://localhost:5001/brand
-                const response = await fetch('https://medisense-backend.onrender.com/brand', {
+                const response = await fetch('http://localhost:5000/brand', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

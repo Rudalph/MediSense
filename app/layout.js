@@ -1,6 +1,6 @@
 import { Cabin, Roboto } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/Components/Navbar";
+import ConditionalNavbar from "@/Components/ConditionalNavbar";
 
 
 const inter = Cabin({ subsets: ["latin"], weight: ['400', '500', '600', '700'] });
@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="overflow-y-scroll no-scrollbar">
       <body className={inter.className}>
-        <Navbar />
+        <ConditionalNavbar />
         {children}
       </body>
     </html>
