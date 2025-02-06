@@ -13,9 +13,6 @@ from langchain_community.vectorstores import Chroma
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_huggingface import HuggingFaceEmbeddings
 import os
-import shutil
-import psutil
-import time
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -24,7 +21,8 @@ CORS(app)
 
 groq_api_key="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"
 embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2" )
-llm=ChatGroq(groq_api_key=groq_api_key,model_name="llama-3.1-8b-instant")
+llm=ChatGroq(groq_api_key=groq_api_key,model_name="llama-3.1-8b-instant", temperature=0.5)
+
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
@@ -73,7 +71,6 @@ def load_documents():
 
 
     text_splitter = CharacterTextSplitter(
-        separator=".",
         chunk_size=300,
         chunk_overlap=200,
         length_function=len,
@@ -81,7 +78,6 @@ def load_documents():
     )
     print(text_splitter)
     pages = loader.load_and_split(text_splitter)
-
     vectordb = Chroma.from_documents(pages, embeddings, persist_directory="./chroma_db")
 
 
@@ -129,6 +125,7 @@ def save_file_to_folder():
         file_path = os.path.join(UPLOAD_FOLDER, file.filename)
         file.save(file_path)
         load_documents()
+        os.remove(file_path)
         return jsonify({'message': f'File {file.filename} uploaded successfully!'}), 200
 
 
@@ -147,3 +144,4 @@ def ask_question():
                 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
+
