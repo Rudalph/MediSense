@@ -11,34 +11,69 @@ from langchain_community.document_loaders import PyPDFDirectoryLoader
 from flask_cors import CORS
 import os
 import google.generativeai as genai
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_groq import ChatGroq
+from groq import Groq
 
 app = Flask(__name__)
 CORS(app)
 
-model = genai.GenerativeModel('gemini-1.5-pro-latest')
+# model = genai.GenerativeModel('gemini-1.5-pro-latest')
+# os.environ["GOOGLE_API_KEY"] = "AIzaSyDNr-WITS3OgCnROMjVQk0jUblTPsCxVXs"
+# llm = ChatGoogleGenerativeAI(model="models/gemini-1.5-pro-latest", temperature=0.5)
+# embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
 
-os.environ["GOOGLE_API_KEY"] = "AIzaSyDNr-WITS3OgCnROMjVQk0jUblTPsCxVXs"
+groq_api_key="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"
+embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2" )
+llm=ChatGroq(groq_api_key=groq_api_key,model_name="llama-3.1-8b-instant", temperature=0.5)
 
-llm = ChatGoogleGenerativeAI(model="models/gemini-1.5-pro-latest", temperature=0.5)
-embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+def saviour(req, answer1):
+    complete_response = ""
+    client = Groq(api_key=groq_api_key)
+    completion = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[
+            {
+                "role": "user",
+                "content": f"""The question provided is {req} \n 
+                            The generated answer is: {answer1} \n
+                            1. If this answer is relevant and correctly addresses the question, return only '1' \n
+                            2. If the answer is incorrect, incomplete, or irrelevant, generate a new and correct answer that directly answers the question, but only if the question is related to healthcare.\n
+                            3. If the question is not related to healthcare, return: 'I don't know the answer'
+                            4. Do not include any additional text beyond what is requested.
+                            """
+            },
+        ],
+        temperature=1,
+        # max_completion_tokens=1024,
+        top_p=1,
+        stream=True,
+        stop=None,
+    )
+    
+    for chunk in completion:
+        if chunk.choices[0].delta.content is not None:
+            complete_response += chunk.choices[0].delta.content
+            
+    return complete_response
 
-# directory="./Data"
+directory="./Data"
 
-# loader = PyPDFDirectoryLoader(directory)   
-# documents = loader.load()
+loader = PyPDFDirectoryLoader(directory)   
+documents = loader.load()
 
 
-# text_splitter = CharacterTextSplitter(
-#     separator=".",
-#     chunk_size=4000,
-#     chunk_overlap=3000,
-#     length_function=len,
-#     is_separator_regex=False,
-# )
-# print(text_splitter)
-# pages = loader.load_and_split(text_splitter)
+text_splitter = CharacterTextSplitter(
+    separator=".",
+    chunk_size=4000,
+    chunk_overlap=3000,
+    length_function=len,
+    is_separator_regex=False,
+)
+print(text_splitter)
+pages = loader.load_and_split(text_splitter)
 
-# vectordb = Chroma.from_documents(pages, embeddings, persist_directory="./chroma_db")
+vectordb = Chroma.from_documents(pages, embeddings, persist_directory="./chroma_db")
 
 vectorstore_disk = Chroma(
     persist_directory="./chroma_db",
@@ -70,21 +105,23 @@ def ask_question():
     answer1 = response["answer"]
     print("answer1: ",answer1)
     
-    generated_response = model.generate_content(f"""
-The question provided is: '{question}'.
-The generated answer is: '{answer1}'.
+    # generated_response = llm.generate_content(f"""
+    # The question provided is: '{question}'.
+    # The generated answer is: '{answer1}'.
 
-If this answer is relevant and correctly addresses the question, return only '1'.
-If the answer is incorrect, incomplete, or irrelevant, generate a new and correct answer that directly answers the question, but only if the question is related to healthcare.
+    # If this answer is relevant and correctly addresses the question, return only '1'.
+    # If the answer is incorrect, incomplete, or irrelevant, generate a new and correct answer that directly answers the question, but only if the question is related to healthcare.
 
-If the question is not related to healthcare, return: 'I don't know the answer'.
-Do not include any additional text beyond what is requested.
-""" 
-)
+    # If the question is not related to healthcare, return: 'I don't know the answer'.
+    # Do not include any additional text beyond what is requested.
+    # """ 
+    # )
 
-    print(generated_response)
-    answer2 = generated_response._result.candidates[0].content.parts[0].text
-    print("answer2: ",answer2)
+    # print(generated_response)
+    # answer2 = generated_response._result.candidates[0].content.parts[0].text
+    # print("answer2: ",answer2)
+    
+    answer2 = saviour(question, answer1)
     
     final_answer=""
     

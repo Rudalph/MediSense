@@ -7,11 +7,51 @@ import google.generativeai as genai
 import re
 from langchain_community.graphs import Neo4jGraph
 from flask_cors import CORS
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_groq import ChatGroq
+from groq import Groq
 
 app = Flask(__name__)
 CORS(app)
 
 PINATA_JWT_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJmYzU5NmQyNS1kNTNjLTQ5MGItYjViZC0xZWU4MmMwNDk4YjkiLCJlbWFpbCI6ImdvbnNhbHZlc3J1ZGFscGhAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInBpbl9wb2xpY3kiOnsicmVnaW9ucyI6W3siZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjEsImlkIjoiRlJBMSJ9LHsiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjEsImlkIjoiTllDMSJ9XSwidmVyc2lvbiI6MX0sIm1mYV9lbmFibGVkIjpmYWxzZSwic3RhdHVzIjoiQUNUSVZFIn0sImF1dGhlbnRpY2F0aW9uVHlwZSI6InNjb3BlZEtleSIsInNjb3BlZEtleUtleSI6IjRmMjc4NzRjYzk1NjRjOWI2ZjliIiwic2NvcGVkS2V5U2VjcmV0IjoiNzMwMzQ5NWMxODY2MmQwMzlmZDY1ZTE5NDU2MzFhNDQzMzNjZWFkOWEwMTY5NjkxY2EwNDFhMGZhMGNkOWMyNiIsImV4cCI6MTc2NTAyOTg0OX0.moW-ebV3O8ZuieNDlbE2a3H4b5v4x5pL_givpV5v8Go"
+groq_api_key="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"
+embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2" )
+llm=ChatGroq(groq_api_key=groq_api_key,model_name="llama-3.1-8b-instant", temperature=0.5)
+
+def saviour(structured_data):
+    complete_response = ""
+    client = Groq(api_key=groq_api_key)
+    completion = client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=[
+            {
+                "role": "user",
+                "content": f'''From below attached medical report\n\n {structured_data}  \n\n
+                                    I want you to generate a JSON response with keys as Health Parameters and Values as the Numeric value of those Health Parameters
+                                    for example consider below format \n\n
+                                    "Triglycerides": {{
+                                    "Value": 321.0,
+                                    "Remark": "High"
+                                    }}
+                                    \n\n
+                                    You have to strictly follow the format. No changes in the naming convention of the format will be entertained. So please stick to specified fromat.
+                                    if the remark is not specified use your own knowledge and let the user know if its High, Low or Normal
+                                    '''
+            },
+        ],
+        temperature=1,
+        # max_completion_tokens=1024,
+        top_p=1,
+        stream=True,
+        stop=None,
+    )
+    
+    for chunk in completion:
+        if chunk.choices[0].delta.content is not None:
+            complete_response += chunk.choices[0].delta.content
+            
+    return complete_response
 
 
 def extraction_for_graph(file_url):
@@ -41,23 +81,25 @@ def extraction_for_graph(file_url):
     structured_data = json.dumps(data, indent=4) 
     
     
-    GOOGLE_API_KEY = 'AIzaSyCDYiMdIg0_EVoAtJPf2teTfC4rEwcq5jE'
-    genai.configure(api_key=GOOGLE_API_KEY)
-    model = genai.GenerativeModel("gemini-1.5-flash")
+    # GOOGLE_API_KEY = 'AIzaSyCDYiMdIg0_EVoAtJPf2teTfC4rEwcq5jE'
+    # genai.configure(api_key=GOOGLE_API_KEY)
+    # model = genai.GenerativeModel("gemini-1.5-flash")
 
-    response = model.generate_content(f'''From below attached medical report\n\n {structured_data}  \n\n
-                                    I want you to generate a JSON response with keys as Health Parameters and Values as the Numeric value of those Health Parameters
-                                    for example consider below format \n\n
-                                    "Triglycerides": {{
-                                    "Value": 321.0,
-                                    "Remark": "High"
-                                    }}
-                                    \n\n
-                                    You have to strictly follow the format. No changes in the naming convention of the format will be entertained. So please stick to specified fromat.
-                                    if the remark is not specified use your own knowledge and let the user know if its High, Low or Normal
-                                    ''')
-    print(response.text)
-    response_text=response.text 
+    # response = model.generate_content(f'''From below attached medical report\n\n {structured_data}  \n\n
+    #                                 I want you to generate a JSON response with keys as Health Parameters and Values as the Numeric value of those Health Parameters
+    #                                 for example consider below format \n\n
+    #                                 "Triglycerides": {{
+    #                                 "Value": 321.0,
+    #                                 "Remark": "High"
+    #                                 }}
+    #                                 \n\n
+    #                                 You have to strictly follow the format. No changes in the naming convention of the format will be entertained. So please stick to specified fromat.
+    #                                 if the remark is not specified use your own knowledge and let the user know if its High, Low or Normal
+    #                                 ''')
+    # print(response.text)
+    # response_text=response.text 
+    
+    response_text = saviour(structured_data)
     
     # Extract a date from the structured_data
     date_pattern = r'\b\d{2,4}[-/]\d{2}[-/]\d{2,4}\b'  # Matches dates like YYYY-MM-DD, DD-MM-YYYY, etc.
@@ -240,23 +282,25 @@ def extraction():
     structured_data = json.dumps(data, indent=4) 
     
     
-    GOOGLE_API_KEY = 'AIzaSyCDYiMdIg0_EVoAtJPf2teTfC4rEwcq5jE'
-    genai.configure(api_key=GOOGLE_API_KEY)
-    model = genai.GenerativeModel("gemini-1.5-flash")
+    # GOOGLE_API_KEY = 'AIzaSyCDYiMdIg0_EVoAtJPf2teTfC4rEwcq5jE'
+    # genai.configure(api_key=GOOGLE_API_KEY)
+    # model = genai.GenerativeModel("gemini-1.5-flash")
 
-    response = model.generate_content(f'''From below attached medical report\n\n {structured_data}  \n\n
-                                    I want you to generate a JSON response with keys as Health Parameters and Values as the Numeric value of those Health Parameters
-                                    for example consider below format \n\n
-                                    "Triglycerides": {{
-                                    "Value": 321.0,
-                                    "Remark": "High"
-                                    }}
-                                    \n\n
-                                    You have to strictly follow the format. No changes in the naming convention of the format will be entertained. So please stick to specified fromat.
-                                    if the remark is not specified use your own knowledge and let the user know if its High, Low or Normal  
-                                    ''')
-    print(response.text)
-    response_text=response.text 
+    # response = model.generate_content(f'''From below attached medical report\n\n {structured_data}  \n\n
+    #                                 I want you to generate a JSON response with keys as Health Parameters and Values as the Numeric value of those Health Parameters
+    #                                 for example consider below format \n\n
+    #                                 "Triglycerides": {{
+    #                                 "Value": 321.0,
+    #                                 "Remark": "High"
+    #                                 }}
+    #                                 \n\n
+    #                                 You have to strictly follow the format. No changes in the naming convention of the format will be entertained. So please stick to specified fromat.
+    #                                 if the remark is not specified use your own knowledge and let the user know if its High, Low or Normal  
+    #                                 ''')
+    # print(response.text)
+    # response_text=response.text 
+    
+    response_text = saviour(structured_data)
     
     # Extract a date from the structured_data
     date_pattern = r'\b\d{2,4}[-/]\d{2}[-/]\d{2,4}\b'  # Matches dates like YYYY-MM-DD, DD-MM-YYYY, etc.
