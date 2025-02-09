@@ -168,13 +168,13 @@ const Page = () => {
     console.log(Temperature)
     const data = {
       question: `SPO2: ${SPO2}, Pulse Rate: ${PulseRate}, Body Temperature: ${Temperature}. What health recommendations would you provide? Just provide whatever you feel is right. 
-      Note: Do not say you are not build for health reccomendations etc just provide appropriate reccomendations`
+      Note: Do not say you are not build for health reccomendations etc just provide appropriate reccomendations in points`
     };
 
     try {
       //https://medisense-backend.onrender.com/genai
       //http://localhost:5002/
-      const response = await fetch('http://localhost:5000/genai', {
+      const response = await fetch('http://127.0.0.1:5002/genai', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -376,12 +376,130 @@ const Page = () => {
                               <button className={`btn border border-[#1A2238] text-[#1A2238] bg-transparent hover:bg-[#1A2238] hover:text-[white] font-bold ${loader ? 'hover:bg-transparent border border-[#1A2238] hover:border hover:border-[#1A2238]' : ''}`} onClick={() => handleGetRecommendations({ SPO2: entry.SPO2, PulseRate: entry.PulseRate, Temperature: entry.Temperature })}>{loader ? <Image src="/loader_blue.gif" alt='' height={30} width={30} className=' font-extrabold text-lg' /> : 'Get AI Recommendations'}</button>
                             </div>
 
-                            {recommendations && (
+                            {/* {recommendations && (
                               <div className="mt-4">
                                 <h3 className="font-bold">AI Recommendations:</h3>
                                 <p>{recommendations}</p>
                               </div>
-                            )}
+                            )} */}
+
+{recommendations && (
+  <div className="mt-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+    <h3 className="font-bold text-xl mb-4 text-[#1A2238] flex items-center gap-2 animate-fade-in">
+      <svg 
+        className="w-6 h-6 text-[#D45028] animate-pulse" 
+        fill="none" 
+        stroke="currentColor" 
+        viewBox="0 0 24 24"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0012 18.75c-1.03 0-1.96-.413-2.64-1.08l-.547-.547z" />
+      </svg>
+      AI Recommendations
+    </h3>
+    <div className="space-y-4 px-2 animate-slide-up">
+      {recommendations.split('\n')
+        .filter(line => line.trim())
+        .map((line, index) => {
+          // For main points starting with *
+          if (line.startsWith('*')) {
+            return (
+              <ul key={index}>
+                <li className="text-gray-700 leading-relaxed flex items-start gap-2 group font-bold hover:bg-[#D45028] hover:text-white p-2 rounded-lg transition-colors duration-200">
+                  <svg 
+                    className="w-5 h-5 text-[#1A2238] mt-1 group-hover:rotate-12 transition-transform duration-200" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  <span className="flex-1">
+                    {line.replace('* ', '')
+                      .split(/(:\s|\*\*.*?\*\*)/)
+                      .map((part, i) => {
+                        if (part.startsWith('**') && part.endsWith('**')) {
+                          return <strong key={i} className="text-[#D45028]">{part.slice(2, -2)}</strong>;
+                        }
+                        if (part === ': ') {
+                          return <span key={i} className="font-semibold text-[#1A2238]">{part}</span>;
+                        }
+                        return <span key={i}>{part}</span>;
+                      })}
+                  </span>
+                </li>
+              </ul>
+            );
+          }
+          
+          // For sub-points starting with +
+          if (line.startsWith('+')) {
+            return (
+              <ul key={index}>
+                <li className="text-gray-600 leading-7 flex items-start gap-2 pl-8 group font-bold hover:bg-[#D45028] hover:text-[white] p-2 rounded-lg transition-colors duration-200">
+                  <svg 
+                    className="w-4 h-4 text-[#D45028] mt-1 group-hover:scale-110 transition-transform duration-200" 
+                    fill="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <circle cx="12" cy="12" r="4" />
+                  </svg>
+                  <span>
+                    {line.replace('+ ', '')
+                      .split(/(\*\*.*?\*\*)/)
+                      .map((part, i) => {
+                        if (part.startsWith('**') && part.endsWith('**')) {
+                          return <strong key={i} className="text-[#D45028]">{part.slice(2, -2)}</strong>;
+                        }
+                        return <span key={i}>{part}</span>;
+                      })}
+                  </span>
+                </li>
+              </ul>
+            );
+          }
+          
+          // For regular text
+          return (
+            <p key={index} className="text-gray-800 leading-7 px-4 font-bold hover:bg-[#D45028] hover:text-white p-2 rounded-lg transition-colors duration-200">
+              {line.split(/(\*\*.*?\*\*)/).map((part, i) => {
+                if (part.startsWith('**') && part.endsWith('**')) {
+                  return <strong key={i} className="text-[#D45028]">{part.slice(2, -2)}</strong>;
+                }
+                return <span key={i}>{part}</span>;
+              })}
+            </p>
+          );
+        })}
+    </div>
+    <style jsx>{`
+      @keyframes fade-in {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      @keyframes slide-up {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .animate-fade-in {
+        animation: fade-in 0.5s ease-out;
+      }
+      
+      .animate-slide-up {
+        animation: slide-up 0.5s ease-out;
+      }
+    `}</style>
+  </div>
+)}
+
+
                           </div>
                           <form method="dialog" className="modal-backdrop">
                             <button onClick={clear}>Close</button>
