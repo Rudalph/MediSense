@@ -50,11 +50,7 @@ const Page = () => {
     try {
       // https://medisense-backend.onrender.com
       // http://localhost:5000/upload
-<<<<<<< HEAD
       const response = await fetch('http://127.0.0.1:5000/upload', {
-=======
-      const response = await fetch('http://localhost:5000/upload', {
->>>>>>> 5d9cf0ae87a41b3f4cb78921ac1ff83ea722358c
         method: 'POST',
         body: formData,
       });
@@ -97,11 +93,7 @@ const Page = () => {
     }
 
     try {
-<<<<<<< HEAD
       const response = await fetch("http://127.0.0.1:5000/savefolder", {
-=======
-      const response = await fetch("http://localhost:5000/savefolder", {
->>>>>>> 5d9cf0ae87a41b3f4cb78921ac1ff83ea722358c
         method: "POST",
         body: formData,
       });
@@ -185,7 +177,6 @@ const Page = () => {
   };
 
   return (
-<<<<<<< HEAD
 
 <div className="flex flex-col min-h-screen px-4 relative">
   {/* Toast Container */}
@@ -272,97 +263,12 @@ const Page = () => {
                   <div className="chat-bubble bg-[#D1E9F6] text-[#182C4E] font-medium border-2 border-[#182C4E]">
                     {chat.answer}
                   </div>
-=======
-    <div>
-      <ToastContainer
-        progressClassName="toastProgress"
-        bodyClassName="toastBody"
-      />
-      <div className='mt-24 lg:mt-32 flex justify-center lg:gap-10 items-center align-middle gap-5 mx-1'>
-        <Input
-          id="picture"
-          type="file"
-          className="w-full max-w-xs border border-[#182C4E] p-2"
-          onChange={handleFileChange}
-        />
-        <Button type="submit" className={`border border-[#182C4E] text-[#182C4E] bg-transparent font-bold hover:bg-[#182C4E] hover:text-white ${loader ? 'bg-[#182C4E]' : ''}`} onClick={handleSummarizeClick}>{loader ? <Image src="/loader.gif" alt='' height={30} width={30} className=' font-extrabold text-lg' /> : 'Upload'}</Button>
-        {showDrawer ? <Drawer>
-          <DrawerTrigger className='border border-[#182C4E] bg-transparent font-bold hover:bg-[#182C4E] hover:text-white p-2 rounded-md'>Summarize</DrawerTrigger>
-          
-          <DrawerContent className='bg-white'>
-            <DrawerHeader>
-              <DrawerTitle className='text-[#D45028]'>Summary Of Your Report</DrawerTitle>
-            </DrawerHeader>
-            <div className='p-10'>
-              {summary}
-            </div>
-            <DrawerClose>
-              <Button variant="outline" className='border border-[#D45028] text-[#D45028] bg-transparent hover:bg-[#D45028] hover:text-[white] font-bold mb-4'>Close</Button>
-            </DrawerClose>
-          </DrawerContent>
-        </Drawer> : ''}
-
-      </div>
-
-      <div className='w-full fixed bottom-0 flex justify-center align-middle items-center mb-5 lg:mb-10 px-1'>
-        <div className="flex w-full max-w-3xl items-center space-x-2 relative">
-          <Input
-            type="text"
-            placeholder="Ask your medical doubts...."
-            value={question}
-            onChange={handleQuestionChange}
-            className="p-6 border border-[#182C4E] focus:border-[#182C4E] "
-          />
-          <Button
-            type="button"
-            onClick={handleSubmit}
-            className="absolute right-1 px-2 py-1 bg-transparent hover:bg-transparent text-[#182C4E]"
-          >
-            <RiSendPlaneFill size={27} />
-          </Button>
-        </div>
-      </div>
-      {!ans && (
-        <div className='flex justify-center align-middle items-center lg:mt-52 mt-52 opacity-70 h-20'>
-          <img src="https://hrsoftbd.com/assets/servicePhoto/onlinedoctor_20221117111818.gif" alt="" className='h-[400px]' />
-        </div>
-      )}
-      <div className='mt-10'>
-        {/* Chat bubbles */}
-        <div className="chat chat-start">
-          <div className="chat-header">
-          </div>
-        </div>
-        <div className='mt-10 flex justify-center overflow-hidden'>
-
-          <div className='mt-10 w-4/5 items-center align-middle overflow-y-auto style={{ maxWidth: 100%, maxHeight: 100vh }}'>
-
-            {chatHistory.map((chat, index) => (
-              <div key={index}>
-                <div className="chat chat-start">
-                  <div className="chat-image avatar">
-                    <div className=" w-32rounded-full text-[#182C4E]">
-                      <RiRobot2Line size={50} />
-                    </div>
-                  </div>
-                  <div className="chat-bubble bg-[#DEF8ED] text-black">{chat.question}</div>
-                </div>
-
-                <div className="chat chat-end p-5">
-                  <div className="chat-image avatar">
-                    <div className=" w-32rounded-full text-[#182C4E]">
-                      <FaRegUser size={50} />
-                    </div>
-                  </div>
-                  <div className="chat-bubble bg-[#DEF8ED] text-black">{chat.answer}</div>
->>>>>>> 5d9cf0ae87a41b3f4cb78921ac1ff83ea722358c
                 </div>
               </div>
             ))}
           </div>
         </div>
       </div>
-<<<<<<< HEAD
     )}
   </div>
 
@@ -386,9 +292,6 @@ const Page = () => {
     </div>
   </div>
 </div>
-=======
-    </div>
->>>>>>> 5d9cf0ae87a41b3f4cb78921ac1ff83ea722358c
   );
 };
 
