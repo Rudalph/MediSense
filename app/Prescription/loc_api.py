@@ -249,7 +249,8 @@ class HEREMedicalFinder:
         return m
 
 # Replace with your HERE API key
-API_KEY = 'BMU4HbuydpxWUI2stgBX976edrRcU8ytVF6XnPnRSG8'
+
+API_KEY = 'MVZGmWUziFLsXm2ug3CIjmhilGx-JQ55bheaYhzWJxM'
 finder = HEREMedicalFinder(API_KEY)
 
 @app.route('/find_medical_facilities', methods=['POST'])

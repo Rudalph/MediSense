@@ -40,7 +40,7 @@ const Page = () => {
     try {
       //http://127.0.0.1:5003/bot
       //https://medisense-backend.onrender.com
-      const response = await fetch('http://127.0.0.1:5003/bot', {
+      const response = await fetch('http://127.0.0.1:5000/bot', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -206,96 +206,6 @@ const generateSpeech = async (text) => {
 
   return (
     <div>
-      {/* <div className='fixed bottom-0 left-0'>
-        <div className="drawer">
-          <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-          <div className="drawer-content">
-           
-            <label htmlFor="my-drawer" className="btn drawer-button bg-transparent shadow-none"><BsFillClipboardDataFill size={20} className='text-[#10847E]' /></label>
-          </div>
-          <div className="drawer-side">
-            <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
-            <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
-              <li><a>Sidebar Item 1</a></li>
-              <li><a>Sidebar Item 2</a></li>
-              <li><a><strong className='p-3'>1. The Gale Encyclopedia of Medicine</strong></a></li>
-              <li><a><strong className='p-3'>2. Research Papers</strong></a></li>
-              <li><a><strong className='p-3'>3. Medical Books</strong></a></li>
-              <li><a><strong className='p-3'>4. Consumer Protection Act 2019</strong></a></li>
-              <li><a><strong className='p-3'>5. Medical Termination of Pregnancy Act, 1971</strong></a></li>
-              <li><a><strong className='p-3'>6. The Clinical Establishments Act, 2010</strong></a></li>
-              <li><a><strong className='p-3'>7. The Drugs and Cosmetics Act, 1940</strong></a></li>
-              <li><a><strong className='p-3'>8. The Mental Healthcare Act, 2017</strong></a></li>
-              <li><a><strong className='p-3'>9. Indian Penal Code</strong></a></li>
-              <li><a><strong className='p-3'>10. Code of Civil Procedure</strong></a></li>
-              <li><a><strong className='p-3'>11. Code of Criminal Procedure</strong></a></li>
-              <li><a><strong className='p-3'>12. Constitution of India</strong></a></li>
-
-            </ul>
-          </div>
-        </div>
-      </div> */}
-      
-      
-
-      {/* <div className='fixed bottom-0 right-0'>
-        <div className="drawer drawer-end">
-          <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
-          <div className="drawer-content">
-            
-            <label htmlFor="my-drawer-4" className="btn drawer-button bg-transparent shadow-none"><LuNewspaper size={20} className='text-[#10847E]' /></label>
-          </div>
-          <div className="drawer-side">
-            <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-            <ul className="menu p-4 w-auto min-h-full bg-base-200 text-base-content">
-              <li><a>Sidebar Item 1</a></li>
-              <li><a>Sidebar Item 2</a></li>
-              <li>
-                <div className="card w-96 bg-base-100 shadow-xl m-2">
-                  <div className="card-body">
-                    <h2 className="card-title">Nutrition</h2>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="card w-96 bg-base-100 shadow-xl m-2">
-                  <div className="card-body">
-                    <h2 className="card-title">Fitness</h2>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="card w-96 bg-base-100 shadow-xl m-2">
-                  <div className="card-body">
-                    <h2 className="card-title">Stress Management</h2>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="card w-96 bg-base-100 shadow-xl m-2">
-                  <div className="card-body">
-                    <h2 className="card-title">Sleep Optimization</h2>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="card w-96 bg-base-100 shadow-xl m-2">
-                  <div className="card-body">
-                    <h2 className="card-title">Legal</h2>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div className="card w-96 bg-base-100 shadow-xl m-2">
-                  <div className="card-body">
-                    <h2 className="card-title">Medical Misinformation</h2>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div> */}
 
       <div className='mt-10'>
         
@@ -313,7 +223,7 @@ const generateSpeech = async (text) => {
                 <div className="chat chat-start p-5">
                   <div className="chat-image avatar">
                     <div className=" w-32rounded-full text-[#182C4E]">
-                      <RiRobot2Line size={40} />
+                    <FaRegUser size={35} />
                     </div>
                   </div>
                   <div className="chat-bubble bg-[#D1E9F6] text-[#182C4E] font-medium border-2 border-[#182C4E]">{chat.question}</div>
@@ -322,7 +232,7 @@ const generateSpeech = async (text) => {
                 <div className="chat chat-end p-5">
                   <div className="chat-image avatar">
                     <div className=" w-32rounded-full text-[#182C4E]">
-                      <FaRegUser size={35} />
+                      <RiRobot2Line size={40} />
                     </div>
                   </div>
                   <div className="chat-bubble bg-[#D1E9F6] text-[#182C4E] font-medium border-2 border-[#182C4E]">{chat.answer}</div>

@@ -9,7 +9,7 @@ const Indivisual = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5009/indivisual');
+        const response = await fetch('http://localhost:5000/indivisual');
         const result = await response.json();
         setData(result);  
         console.log("Indivisual Results: ",result); 

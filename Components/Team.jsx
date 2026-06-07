@@ -60,7 +60,7 @@ export default function Team() {
                 </div>
 
 
-                <div className="card card-compact bg-base-100 w-72 shadow-xl border border-solid border-[#1A2238]">
+                {/* <div className="card card-compact bg-base-100 w-72 shadow-xl border border-solid border-[#1A2238]">
                     <figure className="overflow-hidden">
                         <img
                             src="/Siddhesh_Image.jpg"
@@ -72,7 +72,7 @@ export default function Team() {
                         <h2 className="card-title text-[#1A2238]">Siddhesh Pradhan</h2>
                         <p className='text-base text-[#D45028]'>Team Member - Full stack developer</p>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )

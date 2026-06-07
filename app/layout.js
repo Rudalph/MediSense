@@ -1,4 +1,4 @@
-import { Cabin, Roboto } from "next/font/google";
+import { Cabin, Roboto, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import ConditionalNavbar from "@/Components/ConditionalNavbar";
 

@@ -16,12 +16,19 @@ const keyMapping = {
 
 const Recommendations = () => {
 
+  const formatKey = (key) => {
+  return key
+    .replace(/([A-Z])/g, " $1")
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+};
+
     const [data, setData] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const response = await fetch('http://localhost:5009/reco');
+            const response = await fetch('http://localhost:5000/reco');
             const result = await response.json();  
             console.log("Recomendations Results: ",result); 
             setData(result);

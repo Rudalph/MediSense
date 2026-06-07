@@ -10,7 +10,7 @@ const Overview = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:5009/overview');
+                const response = await fetch('http://localhost:5000/overview');
                 const result = await response.json();
                 console.log("results from graph database: ", result);
 

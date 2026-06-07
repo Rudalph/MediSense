@@ -10,6 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import '../../app/globals.css'
 import Location from './location';
 import Doctors from './doctors';
+import Link from 'next/link';
 
 
 
@@ -45,7 +46,7 @@ const Page = () => {
             try {
                 //https://medisense-backend.onrender.com
                 //http://localhost:5001/brand
-                const response = await fetch('https://medisense-backend.onrender.com/brand', {
+                const response = await fetch('/api/brand', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -246,7 +247,7 @@ const Page = () => {
                 <div className="flex w-full max-w-3xl items-center space-x-2 relative">
                     <Input
                         type="text"
-                        placeholder="Enter Brand Name"
+                        placeholder="Enter Brand Name like ANGISED or AUTRIN"
                         value={question}
                         onChange={handleQuestionChange}
                         className="p-6 border border-gray-300 focus:border-gray-300"
@@ -336,13 +337,37 @@ const Page = () => {
                                     </div>
                                 </div>
                             </dialog>
-                            <button
-                                type="button"
-                                className="rounded-md bg-[#1A2238] px-3 py-2 text-sm font-semibold text-white shadow-sm"
-                                onClick={() => document.getElementById('my_modal_4').showModal()}
-                            >
-                                Book Online
-                            </button>
+                            <div>
+ 
+  <div className="flex space-x-3">
+    <button
+      type="button"
+      className="rounded-md bg-[#1A2238] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#2A3248]"
+      onClick={() => document.getElementById('my_modal_4').showModal()}
+    >
+      Book Online
+    </button>
+
+    <Link href="/fetch_reviews">
+    <button
+      type="button"
+      className="rounded-md bg-[#D45028] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#E46038]"
+    >
+      View Reviews
+    </button>
+    </Link>
+
+    <Link href="/submit_reviews">
+    <button
+      type="button"
+      className="rounded-md border border-[#1A2238] px-3 py-2 text-sm font-semibold text-[#1A2238] shadow-sm hover:bg-gray-100"
+    >
+      Submit Reviews
+    </button>
+    </Link>
+    
+  </div>
+</div>
                         </div>
                     </div>
                     <div className="mt-6 flex flex-col px-5 lg:px-0">
