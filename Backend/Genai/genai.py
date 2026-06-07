@@ -82,7 +82,11 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 CORS(app)
 
+<<<<<<< HEAD
 groq_api_key="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"
+=======
+groq_api_key="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"
+>>>>>>> 5d9cf0ae87a41b3f4cb78921ac1ff83ea722358c
 
 def recommendations_on_parameters(question):
     try:

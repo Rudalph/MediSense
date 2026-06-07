@@ -23,7 +23,11 @@ CORS(app)
 # llm = ChatGoogleGenerativeAI(model="models/gemini-1.5-pro-latest", temperature=0.5)
 # embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
 
+<<<<<<< HEAD
 groq_api_key="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"
+=======
+groq_api_key="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"
+>>>>>>> 5d9cf0ae87a41b3f4cb78921ac1ff83ea722358c
 embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2" )
 llm=ChatGroq(groq_api_key=groq_api_key,model_name="llama-3.1-8b-instant", temperature=0.5)
 

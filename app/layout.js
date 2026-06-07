@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { Cabin, Roboto, Space_Grotesk } from "next/font/google";
+=======
+import { Cabin, Roboto } from "next/font/google";
+>>>>>>> 5d9cf0ae87a41b3f4cb78921ac1ff83ea722358c
 import "./globals.css";
 import ConditionalNavbar from "@/Components/ConditionalNavbar";
 

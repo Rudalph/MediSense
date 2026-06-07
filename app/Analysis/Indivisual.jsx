@@ -9,7 +9,11 @@ const Indivisual = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+<<<<<<< HEAD
         const response = await fetch('http://localhost:5000/indivisual');
+=======
+        const response = await fetch('http://localhost:5009/indivisual');
+>>>>>>> 5d9cf0ae87a41b3f4cb78921ac1ff83ea722358c
         const result = await response.json();
         setData(result);  
         console.log("Indivisual Results: ",result); 

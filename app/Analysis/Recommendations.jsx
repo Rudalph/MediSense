@@ -16,6 +16,7 @@ const keyMapping = {
 
 const Recommendations = () => {
 
+<<<<<<< HEAD
   const formatKey = (key) => {
   return key
     .replace(/([A-Z])/g, " $1")
@@ -23,12 +24,18 @@ const Recommendations = () => {
     .replace(/\b\w/g, (char) => char.toUpperCase());
 };
 
+=======
+>>>>>>> 5d9cf0ae87a41b3f4cb78921ac1ff83ea722358c
     const [data, setData] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
           try {
+<<<<<<< HEAD
             const response = await fetch('http://localhost:5000/reco');
+=======
+            const response = await fetch('http://localhost:5009/reco');
+>>>>>>> 5d9cf0ae87a41b3f4cb78921ac1ff83ea722358c
             const result = await response.json();  
             console.log("Recomendations Results: ",result); 
             setData(result);
