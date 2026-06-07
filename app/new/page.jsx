@@ -1,4 +1,4 @@
-// "use client"
+"use client"
 // // pages/index.js
 // import Head from 'next/head'
 // import Link from 'next/link'
@@ -358,3 +358,11 @@
 //     </div>
 //   );
 // }
+
+export default function NewPage() {
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <h1 className="text-4xl font-bold text-gray-800">Welcome to the New Page</h1>
+    </div>
+  );
+}
